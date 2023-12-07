@@ -17,5 +17,8 @@ public class MenuController : MonoBehaviour
         // SceneManager.LoadSceneAsync(1);
     }
 
-
+    public void LoadLevels(int difficulty)
+    {
+        SceneManager.LoadSceneAsync(2);
+    }
 }
