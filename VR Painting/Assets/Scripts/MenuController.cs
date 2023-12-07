@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
+    [SerializeField]
+    private IntSO selectedLevel;
     public void PlayButton()
     {
         SceneManager.LoadSceneAsync(1);
@@ -19,6 +21,7 @@ public class MenuController : MonoBehaviour
 
     public void LoadLevels(int difficulty)
     {
+        selectedLevel.Value = difficulty;
         SceneManager.LoadSceneAsync(2);
     }
 }
