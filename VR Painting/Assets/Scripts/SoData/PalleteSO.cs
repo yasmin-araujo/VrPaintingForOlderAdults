@@ -19,5 +19,5 @@ public class Paint
 {
     public int id;
     public string name;
-    public char letter;
+    public string letter;
 }
