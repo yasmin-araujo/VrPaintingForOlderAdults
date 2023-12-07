@@ -9,10 +9,13 @@ public class MenuController : MonoBehaviour
     public void PlayButton()
     {
         SceneManager.LoadSceneAsync(1);
+        
     }
     
     public void SettingsButton()
     {
         // SceneManager.LoadSceneAsync(1);
     }
+
+
 }

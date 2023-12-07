@@ -1,0 +1,19 @@
+{
+    "paints": [
+        {
+            "id": 0,
+            "name": "Schwarz",
+            "letter": "S"
+        },
+        {
+            "id": 1,
+            "name": "Blau",
+            "letter": "B"
+        },
+        {
+            "id": 2,
+            "name": "Pink",
+            "letter": "P"
+        }
+    ]
+}
