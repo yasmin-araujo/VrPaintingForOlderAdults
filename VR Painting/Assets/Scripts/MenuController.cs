@@ -21,6 +21,7 @@ public class MenuController : MonoBehaviour
 
     public void LoadLevels(int difficulty)
     {
+        print("Loading level " + difficulty);
         selectedLevel.Value = difficulty;
         SceneManager.LoadSceneAsync(2);
     }
