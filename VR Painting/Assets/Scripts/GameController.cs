@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GallerySO gallerySO;
     [SerializeField] private PalleteSO palleteSO;
     [SerializeField] private GameObject board;
+    [SerializeField] private GameObject pallete;
     private int drawingIndex = 0;
 
     // Start is called before the first frame update
@@ -32,6 +33,7 @@ public class GameController : MonoBehaviour
             return;
         
         board.GetComponent<BoardController>().LoadDrawing(gallerySO.gallery.drawings[drawingIndex]);
+        pallete.GetComponent<PalleteController>().LoadPaints(gallerySO.gallery.drawings[drawingIndex].colors);
         
         drawingIndex++;
     }
