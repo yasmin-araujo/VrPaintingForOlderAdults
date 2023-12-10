@@ -23,6 +23,8 @@ public class BoardController : MonoBehaviour
         boardWidth = drawing.matrix[0].Count;
 
         Vector3 posParent = GetComponent<Transform>().parent.gameObject.GetComponent<Transform>().position;
+        float gameScale = GetComponent<Transform>().parent.gameObject.GetComponent<Transform>().localScale.x;
+        print("local scale: " + gameScale);
 
         for (float axisY = 0; axisY < boardHeight; axisY++)
         {
@@ -30,7 +32,7 @@ public class BoardController : MonoBehaviour
             for (float axisX = 0; axisX < boardWidth; axisX++)
             {
                 int pixelColor = drawing.colors[drawing.matrix[(int)axisY][(int)axisX]];
-                Vector3 position = new Vector3(posParent.x + axisX - ((float)boardWidth / 2), posParent.y + (axisY - ((float)boardHeight / 2)) * -1, posParent.z);
+                Vector3 position = new Vector3(posParent.x + (axisX - ((float)boardWidth / 2)) * gameScale, posParent.y + (axisY - ((float)boardHeight / 2)) * -gameScale, posParent.z);
                 CreatePixel((int)axisY, (int)axisX, position, pixelColor, drawing);
                 progress[(int)axisY].Add(-1);
             }
