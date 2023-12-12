@@ -7,9 +7,10 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private IntSO selectedLevel;
     [SerializeField] private GallerySO gallerySO;
-    [SerializeField] private PalleteSO palleteSO;
+    [SerializeField] private List<Material> paintMaterials;
     [SerializeField] private GameObject board;
     [SerializeField] private GameObject pallete;
+    [SerializeField] private GameObject brush;
     private int drawingIndex = 0;
 
     // Start is called before the first frame update
@@ -32,8 +33,10 @@ public class GameController : MonoBehaviour
         if(drawingIndex == gallerySO.gallery.drawings.Count)
             return;
         
-        board.GetComponent<BoardController>().LoadDrawing(gallerySO.gallery.drawings[drawingIndex]);
-        pallete.GetComponent<PalleteController>().LoadPaints(gallerySO.gallery.drawings[drawingIndex].colors);
+        Drawing drawing = gallerySO.gallery.drawings[drawingIndex];
+        board.GetComponent<BoardController>().LoadDrawing(drawing);
+        pallete.GetComponent<PalleteController>().LoadPaints(drawing.colors, paintMaterials);
+        brush.GetComponent<BrushCollisionController>().InitializeBrush(paintMaterials[drawing.colors[0]], drawing.colors[0]);
         
         drawingIndex++;
     }

@@ -8,7 +8,7 @@ public class PixelController : MonoBehaviour
     public int pixelColor;
     public int row, column;
 
-    private void PaintPixel(int color, Material material)
+    public void PaintPixel(int color, Material material)
     {
         if (pixelColor == color)
         {

@@ -8,14 +8,12 @@ using UnityEngine.UI;
 public class PalleteController : MonoBehaviour
 {
     [SerializeField] private PalleteSO palleteSO;
-    [SerializeField] private List<Material> paintMaterials;
     [SerializeField] private GameObject paintPrefab;
 
-    public void LoadPaints(List<int> paintsIndex)
+    public void LoadPaints(List<int> paintsIndex, List<Material> paintMaterials)
     {
         Vector3 posPallete = GetComponent<Transform>().position;
         float paintSize = paintPrefab.GetComponent<RectTransform>().sizeDelta.x + 1;
-        print("paint size: " + paintSize);
 
         for (int i = 0; i < paintsIndex.Count; i++)
         {
