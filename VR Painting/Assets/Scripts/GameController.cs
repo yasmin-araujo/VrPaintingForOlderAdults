@@ -30,14 +30,14 @@ public class GameController : MonoBehaviour
 
     private void LoadNewGame()
     {
-        if(drawingIndex == gallerySO.gallery.drawings.Count)
+        if (drawingIndex == gallerySO.gallery.drawings.Count)
             return;
-        
+
         Drawing drawing = gallerySO.gallery.drawings[drawingIndex];
         board.GetComponent<BoardController>().LoadDrawing(drawing);
-        pallete.GetComponent<PalleteController>().LoadPaints(drawing.colors, paintMaterials);
+        pallete.GetComponent<PalleteController>().LoadPaints(drawing.colors, paintMaterials, (material, color) => brush.GetComponent<BrushCollisionController>().InitializeBrush(material, color));
         brush.GetComponent<BrushCollisionController>().InitializeBrush(paintMaterials[drawing.colors[0]], drawing.colors[0]);
-        
+
         drawingIndex++;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BrushCollisionController : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class BrushCollisionController : MonoBehaviour
         {
             hitPixel = true;
             other.gameObject.GetComponent<PixelController>().PaintPixel(paintColor, brushMaterial);
+        }
+        else if(other.gameObject.tag == "PaintTag")
+        {
+            other.gameObject.GetComponent<Button>().onClick.Invoke();
         }
     }
 
