@@ -24,7 +24,6 @@ public class BoardController : MonoBehaviour
 
         Vector3 posParent = GetComponent<Transform>().parent.gameObject.GetComponent<Transform>().position;
         float gameScale = GetComponent<Transform>().parent.gameObject.GetComponent<Transform>().localScale.x;
-        print("local scale: " + gameScale);
 
         for (float axisY = 0; axisY < boardHeight; axisY++)
         {
