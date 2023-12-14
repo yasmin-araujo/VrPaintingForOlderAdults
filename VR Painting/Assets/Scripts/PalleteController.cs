@@ -29,7 +29,9 @@ public class PalleteController : MonoBehaviour
     {
         GameObject newPaint = Instantiate(paintPrefab, position, Quaternion.identity, GetComponent<Transform>());
         newPaint.GetComponent<Image>().material = material;
-        newPaint.GetComponent<Transform>().Find("ColorCode").gameObject.GetComponent<TextMeshProUGUI>().text = colorCode;
+        TextMeshProUGUI paintTextTMP = newPaint.GetComponent<Transform>().Find("ColorCode").gameObject.GetComponent<TextMeshProUGUI>();
+        paintTextTMP.text = colorCode;
+        paintTextTMP.color = color == 1 ? Color.black : Color.white;
         newPaint.GetComponent<Button>().onClick.AddListener(() => SetColorToBrush(material, color));
     }
 }

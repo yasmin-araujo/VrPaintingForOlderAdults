@@ -7,11 +7,16 @@
         },
         {
             "id": 1,
+            "name": "Weiss",
+            "letter": "W"
+        },
+        {
+            "id": 2,
             "name": "Blau",
             "letter": "B"
         },
         {
-            "id": 2,
+            "id": 3,
             "name": "Pink",
             "letter": "P"
         }
