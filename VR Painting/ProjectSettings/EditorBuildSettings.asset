@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LevelMenuOld.unity
     guid: 718e9c5b913cad64d92b48a9aeda591e
+  - enabled: 0
+    path: Assets/Scenes/Game.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 940d4d0047dbae5498a2ccaebf33b467
@@ -18,8 +21,11 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelMenu.unity
     guid: 334cbf77667b41c4c894bf57c3646fdf
   - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/GameMountains.unity
+    guid: 6c5b8b813aa47a048a8d89db19079c0c
+  - enabled: 1
+    path: Assets/Scenes/GameSunset.unity
+    guid: c8864c6003732c84e95c311f51d5fe3f
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 069c4ee77e1c4864aadcb0ac62eab32c, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: f03d993739139e14f93b028759a2d040, type: 2}
