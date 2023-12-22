@@ -8,14 +8,19 @@ public class MenuController : MonoBehaviour
 {
     [SerializeField]
     private IntSO selectedLevel;
-    public void PlayButton()
+    public void PlayButton(bool isDesktop)
     {
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(!isDesktop ? "LevelMenu" : "LevelMenuOld");
     }
     
     public void SettingsButton()
     {
         // SceneManager.LoadSceneAsync(1);
+    }
+
+    public void BackToMainMenuButton()
+    {
+        SceneManager.LoadSceneAsync(0);
     }
 
     public void LoadLevels(int difficulty)
