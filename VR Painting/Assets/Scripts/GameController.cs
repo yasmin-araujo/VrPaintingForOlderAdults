@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour
         Drawing drawing = gallerySO.gallery.drawings[drawingIndex];
         board.GetComponent<BoardController>().LoadDrawing(drawing);
         pallete.GetComponent<PalleteController>().LoadPaints(drawing.colors, paintMaterials, (material, color) => brush.GetComponent<BrushCollisionController>().InitializeBrush(material, color));
-        brush.GetComponent<BrushCollisionController>().InitializeBrush(paintMaterials[drawing.colors[0]], drawing.colors[0]);
+        // brush.GetComponent<BrushCollisionController>().InitializeBrush(paintMaterials[drawing.colors[0]], drawing.colors[0]);
 
         drawingIndex++;
     }

@@ -3828,6 +3828,8 @@ GameObject:
   - component: {fileID: 802417654}
   - component: {fileID: 802417653}
   - component: {fileID: 802417652}
+  - component: {fileID: 802417656}
+  - component: {fileID: 802417655}
   m_Layer: 0
   m_Name: PointableCanvasModule
   m_TagString: Untagged
@@ -3879,6 +3881,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &802417655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802417651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea67d288c8927174a991f774db5cf270, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gallerySO: {fileID: 11400000, guid: dc8e5a9a14ff3e041abe438758169e4b, type: 2}
+  palleteSO: {fileID: 11400000, guid: cb89a44c7aa4bc341a268c477056bdad, type: 2}
+--- !u!114 &802417656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802417651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7f41dd6b2e4f148b404a79fad051a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedLevel: {fileID: 11400000, guid: 6bd8d72f29f6f6f4b9de4222ce9c4242, type: 2}
 --- !u!1 &805471561
 GameObject:
   m_ObjectHideFlags: 0

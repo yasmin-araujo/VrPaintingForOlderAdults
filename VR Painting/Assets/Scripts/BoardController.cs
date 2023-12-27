@@ -51,7 +51,7 @@ public class BoardController : MonoBehaviour
         string code = palleteSO.pallete.paints.Where(paint => paint.id == pixelColor).First().letter;
 
         // Set color placeholder
-        Transform transform = newPixel.GetComponent<Transform>();
+        Transform transform = newPixel.GetComponent<Transform>().Find("PixelVisual").gameObject.GetComponent<Transform>();
         GameObject colorNumberText = transform.Find("ColorNumber").gameObject;
         colorNumberText.GetComponent<TextMeshPro>().text = code;
 
