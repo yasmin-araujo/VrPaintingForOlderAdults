@@ -36,9 +36,8 @@ public class PalleteController : MonoBehaviour
         buttonVisual.GetComponent<Transform>().Find("Button").gameObject.GetComponent<MeshRenderer>().material = material;
         button.GetComponent<InteractableUnityEventWrapper>().WhenSelect.AddListener(() => SetColorToBrush(material, color));
 
-        // TextMeshProUGUI paintTextTMP = newPaint.GetComponent<Transform>().Find("ColorCode").gameObject.GetComponent<TextMeshProUGUI>();
-        // paintTextTMP.text = colorCode;
-        // paintTextTMP.color = color == 1 ? Color.black : Color.white;
-        // newPaint.GetComponent<Button>().onClick.AddListener(() => SetColorToBrush(material, color));
+        TextMeshPro paintTextTMP = newPaint.GetComponent<Transform>().Find("ColorCode").gameObject.GetComponent<TextMeshPro>();
+        paintTextTMP.text = colorCode;
+        paintTextTMP.color = Color.black;
     }
 }
