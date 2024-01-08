@@ -14,6 +14,8 @@ public class PalleteController : MonoBehaviour
 
     public void LoadPaints(List<int> paintsIndex, List<Material> paintMaterials, Action<Material, int> SetColorToBrush)
     {
+        ClearPallete();
+
         Vector3 posPallete = GetComponent<Transform>().position;
         // redo size
         float paintSize = 0.25F;//paintPrefab.GetComponent<RectTransform>().sizeDelta.x + 1;
@@ -39,5 +41,14 @@ public class PalleteController : MonoBehaviour
         TextMeshPro paintTextTMP = newPaint.GetComponent<Transform>().Find("ColorCode").gameObject.GetComponent<TextMeshPro>();
         paintTextTMP.text = colorCode;
         paintTextTMP.color = Color.black;
+    }
+    private void ClearPallete()
+    {
+        Transform transform = GetComponent<Transform>();
+        foreach (Transform paint in transform)
+        {
+            if (paint.name != "Desk")
+                Destroy(paint.gameObject);
+        }
     }
 }
