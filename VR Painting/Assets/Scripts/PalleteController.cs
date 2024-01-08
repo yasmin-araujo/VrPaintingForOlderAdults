@@ -16,7 +16,6 @@ public class PalleteController : MonoBehaviour
         Vector3 posPallete = GetComponent<Transform>().position;
         // redo size
         float paintSize = 0.25F;//paintPrefab.GetComponent<RectTransform>().sizeDelta.x + 1;
-        float posDesk = 0.23F;
 
         for (int i = 0; i < paintsIndex.Count; i++)
         {
@@ -32,7 +31,7 @@ public class PalleteController : MonoBehaviour
         GameObject newPaint = Instantiate(paintPrefab, position, Quaternion.identity, GetComponent<Transform>());
         GameObject buttonVisual = newPaint.GetComponent<Transform>().Find("Button").gameObject.GetComponent<Transform>().Find("ButtonVisual").gameObject;
         print(buttonVisual.GetComponent<Transform>().Find("Button").gameObject.GetComponent<MeshRenderer>().materials[0]);
-        buttonVisual.GetComponent<Transform>().Find("Button").gameObject.GetComponent<MeshRenderer>().SetMaterials(new List<Material> { material });
+        buttonVisual.GetComponent<Transform>().Find("Button").gameObject.GetComponent<MeshRenderer>().material = material;
 
         // TextMeshProUGUI paintTextTMP = newPaint.GetComponent<Transform>().Find("ColorCode").gameObject.GetComponent<TextMeshProUGUI>();
         // paintTextTMP.text = colorCode;
