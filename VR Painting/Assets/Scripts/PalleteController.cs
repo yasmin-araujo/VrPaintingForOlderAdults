@@ -14,7 +14,8 @@ public class PalleteController : MonoBehaviour
     public void LoadPaints(List<int> paintsIndex, List<Material> paintMaterials, Action<Material, int> SetColorToBrush)
     {
         Vector3 posPallete = GetComponent<Transform>().position;
-        float paintSize = paintPrefab.GetComponent<RectTransform>().sizeDelta.x + 1;
+        // redo size
+        float paintSize = 1;//paintPrefab.GetComponent<RectTransform>().sizeDelta.x + 1;
 
         for (int i = 0; i < paintsIndex.Count; i++)
         {
@@ -28,10 +29,12 @@ public class PalleteController : MonoBehaviour
     private void CreatePaint(Vector3 position, Material material, int color, string colorCode, Action<Material, int> SetColorToBrush)
     {
         GameObject newPaint = Instantiate(paintPrefab, position, Quaternion.identity, GetComponent<Transform>());
-        newPaint.GetComponent<Image>().material = material;
-        TextMeshProUGUI paintTextTMP = newPaint.GetComponent<Transform>().Find("ColorCode").gameObject.GetComponent<TextMeshProUGUI>();
-        paintTextTMP.text = colorCode;
-        paintTextTMP.color = color == 1 ? Color.black : Color.white;
-        newPaint.GetComponent<Button>().onClick.AddListener(() => SetColorToBrush(material, color));
+        GameObject buttonVisual = newPaint.GetComponent<Transform>().Find("Button").gameObject.GetComponent<Transform>().Find("ButtonVisual").gameObject;
+        buttonVisual.GetComponent<Transform>().Find("Button").gameObject.GetComponent<MeshRenderer>().SetMaterials(new List<Material> { material });
+
+        // TextMeshProUGUI paintTextTMP = newPaint.GetComponent<Transform>().Find("ColorCode").gameObject.GetComponent<TextMeshProUGUI>();
+        // paintTextTMP.text = colorCode;
+        // paintTextTMP.color = color == 1 ? Color.black : Color.white;
+        // newPaint.GetComponent<Button>().onClick.AddListener(() => SetColorToBrush(material, color));
     }
 }
