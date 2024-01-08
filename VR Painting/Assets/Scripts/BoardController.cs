@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Oculus.Interaction;
 using TMPro;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ public class BoardController : MonoBehaviour
     private float boardHeight;
     private float boardWidth;
 
-    public void LoadDrawing(Drawing drawing)
+    public void LoadDrawing(Drawing drawing, List<Material> paintMaterials)
     {
         ClearBoard();
         progress.Clear();
@@ -33,14 +34,14 @@ public class BoardController : MonoBehaviour
             {
                 int pixelColor = drawing.colors[drawing.matrix[(int)axisY][(int)axisX]];
                 Vector3 position = new Vector3(posBoard.x + (axisX * pixelScale - ((float)boardWidth * pixelScale / 2)) * gameScale, posBoard.y + (axisY * pixelScale - ((float)boardHeight * pixelScale / 2)) * -gameScale, posBoard.z);
-                CreatePixel((int)axisY, (int)axisX, position, pixelColor, drawing);
+                CreatePixel((int)axisY, (int)axisX, position, pixelColor, drawing, paintMaterials[pixelColor]);
                 progress[(int)axisY].Add(-1);
             }
         }
         print("Drawing loaded");
     }
 
-    private void CreatePixel(int row, int column, Vector3 position, int pixelColor, Drawing drawing)
+    private void CreatePixel(int row, int column, Vector3 position, int pixelColor, Drawing drawing, Material material)
     {
         GameObject newPixel = Instantiate(pixelPrefab, position, Quaternion.identity, GetComponent<Transform>());
         PixelController pixCont = newPixel.GetComponent<PixelController>();
@@ -55,6 +56,8 @@ public class BoardController : MonoBehaviour
         Transform transform = newPixel.GetComponent<Transform>().Find("PixelVisual").gameObject.GetComponent<Transform>();
         GameObject colorNumberText = transform.Find("ColorNumber").gameObject;
         colorNumberText.GetComponent<TextMeshPro>().text = code;
+
+        newPixel.GetComponent<InteractableUnityEventWrapper>().WhenSelect.AddListener(() => newPixel.GetComponent<PixelController>().PaintPixel(pixelColor, material));
 
         CheckBorders(row, column, drawing.matrix[row][column], transform, drawing.matrix);
     }
