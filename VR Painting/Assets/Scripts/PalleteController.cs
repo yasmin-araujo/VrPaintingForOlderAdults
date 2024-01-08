@@ -16,12 +16,12 @@ public class PalleteController : MonoBehaviour
         Vector3 posPallete = GetComponent<Transform>().position;
         // redo size
         float paintSize = 0.25F;//paintPrefab.GetComponent<RectTransform>().sizeDelta.x + 1;
-        float posDesk = 0.25F;
+        float posDesk = 0.23F;
 
         for (int i = 0; i < paintsIndex.Count; i++)
         {
             float posX = i * paintSize - (paintsIndex.Count - 1) * paintSize / 2;
-            Vector3 position = new Vector3(posPallete.x + posX, posPallete.y-posDesk, posPallete.z);
+            Vector3 position = new Vector3(posPallete.x + posX, posPallete.y, posPallete.z);
             string colorCode = palleteSO.pallete.paints.Where(paint => paint.id == paintsIndex[i]).First().letter;
             CreatePaint(position, paintMaterials[paintsIndex[i]], paintsIndex[i], colorCode, SetColorToBrush);
         }
