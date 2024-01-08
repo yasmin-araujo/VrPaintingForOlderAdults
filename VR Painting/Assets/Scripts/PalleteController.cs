@@ -15,12 +15,13 @@ public class PalleteController : MonoBehaviour
     {
         Vector3 posPallete = GetComponent<Transform>().position;
         // redo size
-        float paintSize = 1;//paintPrefab.GetComponent<RectTransform>().sizeDelta.x + 1;
+        float paintSize = 0.25F;//paintPrefab.GetComponent<RectTransform>().sizeDelta.x + 1;
+        float posDesk = 0.25F;
 
         for (int i = 0; i < paintsIndex.Count; i++)
         {
             float posX = i * paintSize - (paintsIndex.Count - 1) * paintSize / 2;
-            Vector3 position = new Vector3(posPallete.x + posX, posPallete.y, posPallete.z - (float)0.1);
+            Vector3 position = new Vector3(posPallete.x + posX, posPallete.y-posDesk, posPallete.z);
             string colorCode = palleteSO.pallete.paints.Where(paint => paint.id == paintsIndex[i]).First().letter;
             CreatePaint(position, paintMaterials[paintsIndex[i]], paintsIndex[i], colorCode, SetColorToBrush);
         }
@@ -30,6 +31,7 @@ public class PalleteController : MonoBehaviour
     {
         GameObject newPaint = Instantiate(paintPrefab, position, Quaternion.identity, GetComponent<Transform>());
         GameObject buttonVisual = newPaint.GetComponent<Transform>().Find("Button").gameObject.GetComponent<Transform>().Find("ButtonVisual").gameObject;
+        print(buttonVisual.GetComponent<Transform>().Find("Button").gameObject.GetComponent<MeshRenderer>().materials[0]);
         buttonVisual.GetComponent<Transform>().Find("Button").gameObject.GetComponent<MeshRenderer>().SetMaterials(new List<Material> { material });
 
         // TextMeshProUGUI paintTextTMP = newPaint.GetComponent<Transform>().Find("ColorCode").gameObject.GetComponent<TextMeshProUGUI>();

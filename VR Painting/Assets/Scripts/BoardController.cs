@@ -11,19 +11,20 @@ public class BoardController : MonoBehaviour
 
     private List<List<int>> progress = new List<List<int>>();
 
-    private int boardHeight;
-    private int boardWidth;
+    private float boardHeight;
+    private float boardWidth;
 
     public void LoadDrawing(Drawing drawing)
     {
         ClearBoard();
         progress.Clear();
 
-        boardHeight = drawing.matrix.Count;
-        boardWidth = drawing.matrix[0].Count;
-
-        Vector3 posParent = GetComponent<Transform>().parent.gameObject.GetComponent<Transform>().position;
+        Vector3 posBoard = GetComponent<Transform>().position;
         float gameScale = GetComponent<Transform>().parent.gameObject.GetComponent<Transform>().localScale.x;
+        float pixelScale = pixelPrefab.GetComponent<Transform>().localScale.x;
+
+        boardHeight = drawing.matrix.Count * pixelScale;
+        boardWidth = drawing.matrix[0].Count * pixelScale;
 
         for (float axisY = 0; axisY < boardHeight; axisY++)
         {
@@ -31,7 +32,7 @@ public class BoardController : MonoBehaviour
             for (float axisX = 0; axisX < boardWidth; axisX++)
             {
                 int pixelColor = drawing.colors[drawing.matrix[(int)axisY][(int)axisX]];
-                Vector3 position = new Vector3(posParent.x + (axisX - ((float)boardWidth / 2)) * gameScale, posParent.y + (axisY - ((float)boardHeight / 2)) * -gameScale, posParent.z);
+                Vector3 position = new Vector3(posBoard.x + (axisX * pixelScale - ((float)boardWidth / 2)) * gameScale, posBoard.y + (axisY * pixelScale - ((float)boardHeight / 2)) * -gameScale, posBoard.z);
                 CreatePixel((int)axisY, (int)axisX, position, pixelColor, drawing);
                 progress[(int)axisY].Add(-1);
             }
