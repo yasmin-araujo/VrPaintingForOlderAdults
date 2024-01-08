@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Oculus.Interaction;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,9 +30,11 @@ public class PalleteController : MonoBehaviour
     private void CreatePaint(Vector3 position, Material material, int color, string colorCode, Action<Material, int> SetColorToBrush)
     {
         GameObject newPaint = Instantiate(paintPrefab, position, Quaternion.identity, GetComponent<Transform>());
-        GameObject buttonVisual = newPaint.GetComponent<Transform>().Find("Button").gameObject.GetComponent<Transform>().Find("ButtonVisual").gameObject;
+        GameObject button = newPaint.GetComponent<Transform>().Find("Button").gameObject;
+        GameObject buttonVisual = button.GetComponent<Transform>().Find("ButtonVisual").gameObject;
         print(buttonVisual.GetComponent<Transform>().Find("Button").gameObject.GetComponent<MeshRenderer>().materials[0]);
         buttonVisual.GetComponent<Transform>().Find("Button").gameObject.GetComponent<MeshRenderer>().material = material;
+        button.GetComponent<InteractableUnityEventWrapper>().WhenSelect.AddListener(() => SetColorToBrush(material, color));
 
         // TextMeshProUGUI paintTextTMP = newPaint.GetComponent<Transform>().Find("ColorCode").gameObject.GetComponent<TextMeshProUGUI>();
         // paintTextTMP.text = colorCode;

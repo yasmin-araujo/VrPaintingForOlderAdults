@@ -614,7 +614,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9048238750646488156, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 579515126}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 65207973030035947, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 573384186}
   m_SourcePrefab: {fileID: 100100000, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
 --- !u!4 &312885130 stripped
 Transform:
@@ -1423,6 +1426,23 @@ MonoBehaviour:
     VerticesPerDegree: 1.4
     MaxHorizontalResolution: 128
     MaxVerticalResolution: 32
+--- !u!1 &573384185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 65207973030035947, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
+  m_PrefabInstance: {fileID: 312885129}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &573384186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573384185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57cfc6b223cd428429792f1b970d1dc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &579515125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2695,7 +2715,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b47a7f8685471a5409c32ff5fb111930, type: 2}
   board: {fileID: 988004192}
   pallete: {fileID: 324516848}
-  brush: {fileID: 0}
+  hands: {fileID: 0}
 --- !u!1 &1088112925
 GameObject:
   m_ObjectHideFlags: 0
