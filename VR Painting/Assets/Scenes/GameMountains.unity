@@ -2715,7 +2715,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b47a7f8685471a5409c32ff5fb111930, type: 2}
   board: {fileID: 988004192}
   pallete: {fileID: 324516848}
-  hands: {fileID: 0}
+  hands: {fileID: 573384185}
 --- !u!1 &1088112925
 GameObject:
   m_ObjectHideFlags: 0

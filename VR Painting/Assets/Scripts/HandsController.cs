@@ -4,28 +4,25 @@ using UnityEngine;
 
 public class HandsController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    private Material handsMaterial;
+    private int paintColor;
 
     public void InitializeHands(Material material, int color)
     {
-        print("funciona!");
+        paintColor = color;
+        handsMaterial = material;
+
+        // Change hands color
+        int flag = 0;
         Transform[] children = GetComponentsInChildren<Transform>();
         foreach (Transform child in children)
         {
-            if (child.name == "l_handMeshNode")
+            if (child.name == "l_handMeshNode" || child.name == "r_handMeshNode")
             {
-                print("achou");
-                break;
+                flag++;
+                child.gameObject.GetComponent<SkinnedMeshRenderer>().material = material;
+                if (flag >= 2)
+                    break;
             }
         }
 
