@@ -22,6 +22,15 @@ public class GameController : MonoBehaviour
         LoadNewGame();
     }
 
+    void Update()
+    {
+        if(board.GetComponent<BoardController>().finished)
+        {
+            board.GetComponent<BoardController>().finished = false;
+            LoadNewGame();
+        }
+    }
+
     private void LoadNewGame()
     {
         if (drawingIndex == gallerySO.gallery.drawings.Count)

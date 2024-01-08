@@ -11,15 +11,16 @@ public class BoardController : MonoBehaviour
     [SerializeField] private GameObject pixelPrefab;
     [SerializeField] private PalleteSO palleteSO;
 
-    private List<List<int>> progress = new List<List<int>>();
-
     private float boardHeight;
     private float boardWidth;
+    private int progress = 0;
+
+    public bool finished = false;
 
     public void LoadDrawing(Drawing drawing, List<Material> paintMaterials, Func<int> GetHandsColor)
     {
         ClearBoard();
-        progress.Clear();
+        progress = 0;
 
         boardHeight = drawing.matrix.Count;
         boardWidth = drawing.matrix[0].Count;
@@ -30,13 +31,11 @@ public class BoardController : MonoBehaviour
 
         for (float axisY = 0; axisY < boardHeight; axisY++)
         {
-            progress.Add(new List<int>());
             for (float axisX = 0; axisX < boardWidth; axisX++)
             {
                 int pixelColor = drawing.colors[drawing.matrix[(int)axisY][(int)axisX]];
                 Vector3 position = new Vector3(posBoard.x + (axisX * pixelScale - ((float)boardWidth * pixelScale / 2)) * gameScale, posBoard.y + (axisY * pixelScale - ((float)boardHeight * pixelScale / 2)) * -gameScale, posBoard.z);
                 CreatePixel((int)axisY, (int)axisX, position, pixelColor, drawing, paintMaterials[pixelColor], GetHandsColor);
-                progress[(int)axisY].Add(-1);
             }
         }
         print("Drawing loaded");
@@ -58,7 +57,19 @@ public class BoardController : MonoBehaviour
         GameObject colorNumberText = transform.Find("ColorNumber").gameObject;
         colorNumberText.GetComponent<TextMeshPro>().text = code;
 
-        newPixel.GetComponent<InteractableUnityEventWrapper>().WhenSelect.AddListener(() => newPixel.GetComponent<PixelController>().PaintPixel(material, GetHandsColor));
+        newPixel.GetComponent<InteractableUnityEventWrapper>().WhenSelect.AddListener(() =>
+        {
+            if (colorNumberText.GetComponent<TextMeshPro>().text != "")
+            {
+                progress++;
+                newPixel.GetComponent<PixelController>().PaintPixel(material, GetHandsColor);
+                if (progress >= boardHeight * boardWidth)
+                {
+                    finished = true;
+                    print("FIM");
+                }
+            }
+        });
 
         CheckBorders(row, column, drawing.matrix[row][column], transform, drawing.matrix);
     }

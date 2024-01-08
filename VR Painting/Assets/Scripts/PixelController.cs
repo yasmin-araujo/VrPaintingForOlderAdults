@@ -13,6 +13,7 @@ public class PixelController : MonoBehaviour
     {
         if (pixelColor == GetHandsColor())
         {
+            
             Transform pixelVisualTransform = GetComponent<Transform>().Find("PixelVisual").gameObject.GetComponent<Transform>();
             pixelVisualTransform.Find("Pixel").gameObject.GetComponent<Renderer>().material = material;
             pixelVisualTransform.Find("ColorNumber").gameObject.GetComponent<TextMeshPro>().text = "";
