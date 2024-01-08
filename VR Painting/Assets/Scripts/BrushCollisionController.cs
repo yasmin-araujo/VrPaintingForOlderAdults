@@ -17,24 +17,24 @@ public class BrushCollisionController : MonoBehaviour
         GetComponent<Renderer>().material = material;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "PixelTag")
-        {
-            hitPixel = true;
-            other.gameObject.GetComponent<PixelController>().PaintPixel(paintColor, brushMaterial);
-        }
-        else if(other.gameObject.tag == "PaintTag")
-        {
-            other.gameObject.GetComponent<Button>().onClick.Invoke();
-        }
-    }
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.gameObject.tag == "PixelTag")
+    //     {
+    //         hitPixel = true;
+    //         other.gameObject.GetComponent<PixelController>().PaintPixel(paintColor, brushMaterial);
+    //     }
+    //     else if(other.gameObject.tag == "PaintTag")
+    //     {
+    //         other.gameObject.GetComponent<Button>().onClick.Invoke();
+    //     }
+    // }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "PixelTag")
-        {
-            hitPixel = false;
-        }
-    }
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     if (other.gameObject.tag == "PixelTag")
+    //     {
+    //         hitPixel = false;
+    //     }
+    // }
 }

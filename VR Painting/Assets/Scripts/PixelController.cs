@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,17 +9,17 @@ public class PixelController : MonoBehaviour
     public int pixelColor;
     public int row, column;
 
-    public void PaintPixel(int color, Material material)
+    public void PaintPixel(Material material, Func<int> GetHandsColor)
     {
-        if (pixelColor == color)
+        if (pixelColor == GetHandsColor())
         {
-            GetComponent<Renderer>().material = material;
-            Transform transform = GetComponent<Transform>();
-            transform.Find("ColorNumber").gameObject.GetComponent<TextMeshPro>().text = "";
-            transform.Find("TopBorder").gameObject.SetActive(false);
-            transform.Find("BottomBorder").gameObject.SetActive(false);
-            transform.Find("LeftBorder").gameObject.SetActive(false);
-            transform.Find("RightBorder").gameObject.SetActive(false);
+            Transform pixelVisualTransform = GetComponent<Transform>().Find("PixelVisual").gameObject.GetComponent<Transform>();
+            pixelVisualTransform.Find("Pixel").gameObject.GetComponent<Renderer>().material = material;
+            pixelVisualTransform.Find("ColorNumber").gameObject.GetComponent<TextMeshPro>().text = "";
+            pixelVisualTransform.Find("TopBorder").gameObject.SetActive(false);
+            pixelVisualTransform.Find("BottomBorder").gameObject.SetActive(false);
+            pixelVisualTransform.Find("LeftBorder").gameObject.SetActive(false);
+            pixelVisualTransform.Find("RightBorder").gameObject.SetActive(false);
         }
     }
 

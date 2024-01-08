@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ public class BoardController : MonoBehaviour
     private float boardHeight;
     private float boardWidth;
 
-    public void LoadDrawing(Drawing drawing, List<Material> paintMaterials)
+    public void LoadDrawing(Drawing drawing, List<Material> paintMaterials, Func<int> GetHandsColor)
     {
         ClearBoard();
         progress.Clear();
@@ -34,14 +35,14 @@ public class BoardController : MonoBehaviour
             {
                 int pixelColor = drawing.colors[drawing.matrix[(int)axisY][(int)axisX]];
                 Vector3 position = new Vector3(posBoard.x + (axisX * pixelScale - ((float)boardWidth * pixelScale / 2)) * gameScale, posBoard.y + (axisY * pixelScale - ((float)boardHeight * pixelScale / 2)) * -gameScale, posBoard.z);
-                CreatePixel((int)axisY, (int)axisX, position, pixelColor, drawing, paintMaterials[pixelColor]);
+                CreatePixel((int)axisY, (int)axisX, position, pixelColor, drawing, paintMaterials[pixelColor], GetHandsColor);
                 progress[(int)axisY].Add(-1);
             }
         }
         print("Drawing loaded");
     }
 
-    private void CreatePixel(int row, int column, Vector3 position, int pixelColor, Drawing drawing, Material material)
+    private void CreatePixel(int row, int column, Vector3 position, int pixelColor, Drawing drawing, Material material, Func<int> GetHandsColor)
     {
         GameObject newPixel = Instantiate(pixelPrefab, position, Quaternion.identity, GetComponent<Transform>());
         PixelController pixCont = newPixel.GetComponent<PixelController>();
@@ -57,7 +58,7 @@ public class BoardController : MonoBehaviour
         GameObject colorNumberText = transform.Find("ColorNumber").gameObject;
         colorNumberText.GetComponent<TextMeshPro>().text = code;
 
-        newPixel.GetComponent<InteractableUnityEventWrapper>().WhenSelect.AddListener(() => newPixel.GetComponent<PixelController>().PaintPixel(pixelColor, material));
+        newPixel.GetComponent<InteractableUnityEventWrapper>().WhenSelect.AddListener(() => newPixel.GetComponent<PixelController>().PaintPixel(material, GetHandsColor));
 
         CheckBorders(row, column, drawing.matrix[row][column], transform, drawing.matrix);
     }
