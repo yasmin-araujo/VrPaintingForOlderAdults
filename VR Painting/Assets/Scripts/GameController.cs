@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private IntSO selectedLevel;
     [SerializeField] private GallerySO gallerySO;
+    [SerializeField] private SettingsSO settingsSO;
     [SerializeField] private List<Material> paintMaterials;
     [SerializeField] private GameObject board;
     [SerializeField] private GameObject pallete;

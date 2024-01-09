@@ -8,6 +8,7 @@ public class MenuController : MonoBehaviour
 {
     [SerializeField]
     private IntSO selectedLevel;
+    [SerializeField] private SettingsSO settingsSO;
     public void PlayButton(bool isDesktop)
     {
         SceneManager.LoadSceneAsync(!isDesktop ? "LevelMenu" : "LevelMenuOld");
@@ -15,6 +16,8 @@ public class MenuController : MonoBehaviour
     
     public void SettingsButton()
     {
+        settingsSO.useBrush = !settingsSO.useBrush;
+        print(settingsSO.useBrush);
         // SceneManager.LoadSceneAsync(1);
     }
 
