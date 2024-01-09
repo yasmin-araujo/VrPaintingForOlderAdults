@@ -9,17 +9,23 @@ public class PixelController : MonoBehaviour
     public int pixelColor;
     public int row, column;
 
+    public Action IncrementProgress;
+
     public void PaintPixel(Func<Material> GetHandsMaterial, Func<int> GetHandsColor)
     {
         if (pixelColor == GetHandsColor())
         {
             Transform pixelVisualTransform = GetComponent<Transform>().Find("PixelVisual").gameObject.GetComponent<Transform>();
+            if (pixelVisualTransform.Find("ColorNumber").gameObject.GetComponent<TextMeshPro>().text == "")
+                return;
+            
             pixelVisualTransform.Find("Pixel").gameObject.GetComponent<Renderer>().material = GetHandsMaterial();
             pixelVisualTransform.Find("ColorNumber").gameObject.GetComponent<TextMeshPro>().text = "";
             pixelVisualTransform.Find("TopBorder").gameObject.SetActive(false);
             pixelVisualTransform.Find("BottomBorder").gameObject.SetActive(false);
             pixelVisualTransform.Find("LeftBorder").gameObject.SetActive(false);
             pixelVisualTransform.Find("RightBorder").gameObject.SetActive(false);
+            IncrementProgress();
         }
     }
 

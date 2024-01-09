@@ -48,6 +48,14 @@ public class BoardController : MonoBehaviour
         pixCont.pixelColor = pixelColor;
         pixCont.row = row;
         pixCont.column = column;
+        pixCont.IncrementProgress = () =>
+        {
+            progress++;
+            if (progress >= boardHeight * boardWidth)
+            {
+                finished = true;
+            }
+        };
 
         // Get color code
         string code = palleteSO.pallete.paints.Where(paint => paint.id == pixelColor).First().letter;
@@ -57,19 +65,19 @@ public class BoardController : MonoBehaviour
         GameObject colorNumberText = transform.Find("ColorNumber").gameObject;
         colorNumberText.GetComponent<TextMeshPro>().text = code;
 
-        newPixel.GetComponent<InteractableUnityEventWrapper>().WhenSelect.AddListener(() =>
-        {
-            if (colorNumberText.GetComponent<TextMeshPro>().text != "")
-            {
-                progress++;
-                //newPixel.GetComponent<PixelController>().PaintPixel(GetHandsMaterial, GetHandsColor);
-                if (progress >= boardHeight * boardWidth)
-                {
-                    finished = true;
-                    print("FIM");
-                }
-            }
-        });
+        // This would be used in case the poke interaction would be active
+        // newPixel.GetComponent<InteractableUnityEventWrapper>().WhenSelect.AddListener(() =>
+        // {
+        //     if (colorNumberText.GetComponent<TextMeshPro>().text != "")
+        //     {
+        //         progress++;
+        //         //newPixel.GetComponent<PixelController>().PaintPixel(GetHandsMaterial, GetHandsColor);
+        //         if (progress >= boardHeight * boardWidth)
+        //         {
+        //             finished = true;
+        //         }
+        //     }
+        // });
 
         CheckBorders(row, column, drawing.matrix[row][column], transform, drawing.matrix);
     }
