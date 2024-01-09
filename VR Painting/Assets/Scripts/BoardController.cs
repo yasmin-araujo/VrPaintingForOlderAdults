@@ -62,7 +62,7 @@ public class BoardController : MonoBehaviour
             if (colorNumberText.GetComponent<TextMeshPro>().text != "")
             {
                 progress++;
-                newPixel.GetComponent<PixelController>().PaintPixel(GetHandsMaterial, GetHandsColor);
+                //newPixel.GetComponent<PixelController>().PaintPixel(GetHandsMaterial, GetHandsColor);
                 if (progress >= boardHeight * boardWidth)
                 {
                     finished = true;

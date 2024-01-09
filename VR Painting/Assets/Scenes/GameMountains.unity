@@ -1451,6 +1451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57cfc6b223cd428429792f1b970d1dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handsMaterial: {fileID: 0}
   paintColor: 0
 --- !u!1001 &579515125
 PrefabInstance:
@@ -2062,6 +2063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e1ad9e0c396b64fad0d6c05d9dec18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hands: {fileID: 573384185}
 --- !u!135 &780180306
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2090,7 +2092,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780180303}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

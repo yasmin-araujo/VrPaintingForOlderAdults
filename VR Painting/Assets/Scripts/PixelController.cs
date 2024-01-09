@@ -43,7 +43,6 @@ public class PixelController : MonoBehaviour
     {
         if (other.gameObject.tag == "HandTag")
         {
-            print("Pintou");
             HandCollisionController handCol = other.gameObject.GetComponent<HandCollisionController>();
             PaintPixel(handCol.GetHandMaterial, handCol.GetHandPaintColor);
         }
