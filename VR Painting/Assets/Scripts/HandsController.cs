@@ -4,8 +4,21 @@ using UnityEngine;
 
 public class HandsController : MonoBehaviour
 {
+    [SerializeField] private GameObject leftHand;
+    [SerializeField] private GameObject rightHand;
+    [SerializeField] private GameObject leftBrush;
+    [SerializeField] private GameObject rightBrush;
+    [SerializeField] private bool useBrush;
     public Material handsMaterial;
     public int paintColor;
+
+    void Start()
+    {
+        // leftBrush.SetActive(useBrush);
+        rightBrush.SetActive(useBrush);
+        leftHand.SetActive(!useBrush);
+        rightHand.SetActive(!useBrush);
+    }
 
     public void InitializeHands(Material material, int color)
     {
