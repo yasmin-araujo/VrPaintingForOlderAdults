@@ -9,13 +9,12 @@ public class PixelController : MonoBehaviour
     public int pixelColor;
     public int row, column;
 
-    public void PaintPixel(Material material, Func<int> GetHandsColor)
+    public void PaintPixel(Func<Material> GetHandsMaterial, Func<int> GetHandsColor)
     {
         if (pixelColor == GetHandsColor())
         {
-            
             Transform pixelVisualTransform = GetComponent<Transform>().Find("PixelVisual").gameObject.GetComponent<Transform>();
-            pixelVisualTransform.Find("Pixel").gameObject.GetComponent<Renderer>().material = material;
+            pixelVisualTransform.Find("Pixel").gameObject.GetComponent<Renderer>().material = GetHandsMaterial();
             pixelVisualTransform.Find("ColorNumber").gameObject.GetComponent<TextMeshPro>().text = "";
             pixelVisualTransform.Find("TopBorder").gameObject.SetActive(false);
             pixelVisualTransform.Find("BottomBorder").gameObject.SetActive(false);
@@ -37,6 +36,16 @@ public class PixelController : MonoBehaviour
             TextMeshPro TMP = GetComponent<Transform>().Find("ColorNumber").gameObject.GetComponent<TextMeshPro>();
             TMP.fontSize = 5;
             TMP.fontStyle = FontStyles.Normal;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "HandTag")
+        {
+            print("Pintou");
+            HandCollisionController handCol = other.gameObject.GetComponent<HandCollisionController>();
+            PaintPixel(handCol.GetHandMaterial, handCol.GetHandPaintColor);
         }
     }
 }

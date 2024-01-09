@@ -17,7 +17,7 @@ public class BoardController : MonoBehaviour
 
     public bool finished = false;
 
-    public void LoadDrawing(Drawing drawing, List<Material> paintMaterials, Func<int> GetHandsColor)
+    public void LoadDrawing(Drawing drawing, Func<Material> GetHandsMaterial, Func<int> GetHandsColor)
     {
         ClearBoard();
         progress = 0;
@@ -35,13 +35,13 @@ public class BoardController : MonoBehaviour
             {
                 int pixelColor = drawing.colors[drawing.matrix[(int)axisY][(int)axisX]];
                 Vector3 position = new Vector3(posBoard.x + (axisX * pixelScale - ((float)boardWidth * pixelScale / 2)) * gameScale, posBoard.y + (axisY * pixelScale - ((float)boardHeight * pixelScale / 2)) * -gameScale, posBoard.z);
-                CreatePixel((int)axisY, (int)axisX, position, pixelColor, drawing, paintMaterials[pixelColor], GetHandsColor);
+                CreatePixel((int)axisY, (int)axisX, position, pixelColor, drawing, GetHandsMaterial, GetHandsColor);
             }
         }
         print("Drawing loaded");
     }
 
-    private void CreatePixel(int row, int column, Vector3 position, int pixelColor, Drawing drawing, Material material, Func<int> GetHandsColor)
+    private void CreatePixel(int row, int column, Vector3 position, int pixelColor, Drawing drawing, Func<Material> GetHandsMaterial, Func<int> GetHandsColor)
     {
         GameObject newPixel = Instantiate(pixelPrefab, position, Quaternion.identity, GetComponent<Transform>());
         PixelController pixCont = newPixel.GetComponent<PixelController>();
@@ -62,7 +62,7 @@ public class BoardController : MonoBehaviour
             if (colorNumberText.GetComponent<TextMeshPro>().text != "")
             {
                 progress++;
-                newPixel.GetComponent<PixelController>().PaintPixel(material, GetHandsColor);
+                newPixel.GetComponent<PixelController>().PaintPixel(GetHandsMaterial, GetHandsColor);
                 if (progress >= boardHeight * boardWidth)
                 {
                     finished = true;

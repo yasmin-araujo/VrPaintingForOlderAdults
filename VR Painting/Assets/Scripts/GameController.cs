@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if(board.GetComponent<BoardController>().finished)
+        if (board.GetComponent<BoardController>().finished)
         {
             board.GetComponent<BoardController>().finished = false;
             LoadNewGame();
@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
             return;
 
         Drawing drawing = gallerySO.gallery.drawings[drawingIndex];
-        board.GetComponent<BoardController>().LoadDrawing(drawing, paintMaterials, () => hands.GetComponent<HandsController>().paintColor);
+        board.GetComponent<BoardController>().LoadDrawing(drawing, () => hands.GetComponent<HandsController>().handsMaterial, () => hands.GetComponent<HandsController>().paintColor);
         pallete.GetComponent<PalleteController>().LoadPaints(drawing.colors, paintMaterials, (material, color) => hands.GetComponent<HandsController>().InitializeHands(material, color));
         hands.GetComponent<HandsController>().InitializeHands(paintMaterials[drawing.colors[0]], drawing.colors[0]);
 

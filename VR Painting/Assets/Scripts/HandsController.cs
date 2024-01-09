@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HandsController : MonoBehaviour
 {
-    private Material handsMaterial;
+    public Material handsMaterial;
     public int paintColor;
 
     public void InitializeHands(Material material, int color)

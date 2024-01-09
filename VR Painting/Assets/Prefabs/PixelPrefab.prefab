@@ -296,7 +296,7 @@ MonoBehaviour:
   _data: {fileID: 0}
   _pointableElement: {fileID: 0}
   _surfacePatch: {fileID: 3231355442870201470}
-  _enterHoverNormal: 0.025
+  _enterHoverNormal: 0.00001
   _enterHoverTangent: 0
   _exitHoverNormal: 0.025
   _exitHoverTangent: 0
@@ -503,7 +503,7 @@ Transform:
   m_GameObject: {fileID: 5174432907963104430}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
