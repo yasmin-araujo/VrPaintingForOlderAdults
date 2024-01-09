@@ -1465,7 +1465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftBrush: {fileID: 0}
   rightBrush: {fileID: 6521311272046808154}
-  useBrush: 0
+  settingsSO: {fileID: 11400000, guid: 36b53cbc31fc5db42ba390e585fecd39, type: 2}
   handsMaterial: {fileID: 0}
   paintColor: 0
 --- !u!1001 &579515125
@@ -4842,6 +4842,10 @@ PrefabInstance:
       propertyPath: m_ProvidesContacts
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4546171514233965118, guid: 3635c8443af07564cae350d60995334e, type: 3}
+      propertyPath: hands
+      value: 
+      objectReference: {fileID: 573384185}
     - target: {fileID: 5933425836317366306, guid: 3635c8443af07564cae350d60995334e, type: 3}
       propertyPath: m_TagString
       value: HandTag
@@ -4850,9 +4854,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: brush
       objectReference: {fileID: 0}
+    - target: {fileID: 6624938247432389135, guid: 3635c8443af07564cae350d60995334e, type: 3}
+      propertyPath: hands
+      value: 
+      objectReference: {fileID: 573384185}
     - target: {fileID: 8130641703124135975, guid: 3635c8443af07564cae350d60995334e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0249
+      value: -0.022772938
       objectReference: {fileID: 0}
     - target: {fileID: 8130641703124135975, guid: 3635c8443af07564cae350d60995334e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4860,23 +4868,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8130641703124135975, guid: 3635c8443af07564cae350d60995334e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0391
+      value: 0.04275475
       objectReference: {fileID: 0}
     - target: {fileID: 8130641703124135975, guid: 3635c8443af07564cae350d60995334e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.77354276
+      value: 0.7182547
       objectReference: {fileID: 0}
     - target: {fileID: 8130641703124135975, guid: 3635c8443af07564cae350d60995334e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.5494063
+      value: -0.5900852
       objectReference: {fileID: 0}
     - target: {fileID: 8130641703124135975, guid: 3635c8443af07564cae350d60995334e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.18722403
+      value: 0.3428283
       objectReference: {fileID: 0}
     - target: {fileID: 8130641703124135975, guid: 3635c8443af07564cae350d60995334e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.254424
+      value: -0.13556756
       objectReference: {fileID: 0}
     - target: {fileID: 8130641703124135975, guid: 3635c8443af07564cae350d60995334e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4884,7 +4892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8130641703124135975, guid: 3635c8443af07564cae350d60995334e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 60.184
+      value: 84.004
       objectReference: {fileID: 0}
     - target: {fileID: 8130641703124135975, guid: 3635c8443af07564cae350d60995334e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

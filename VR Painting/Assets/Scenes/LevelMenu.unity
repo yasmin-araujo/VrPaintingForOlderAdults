@@ -240,7 +240,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 495959750}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: BackToMainMenuButton
         m_Mode: 1
@@ -1591,7 +1591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedLevel: {fileID: 11400000, guid: 6bd8d72f29f6f6f4b9de4222ce9c4242, type: 2}
-  settingsSO: {fileID: 0}
+  settingsSO: {fileID: 11400000, guid: 36b53cbc31fc5db42ba390e585fecd39, type: 2}
 --- !u!114 &495959751
 MonoBehaviour:
   m_ObjectHideFlags: 0
