@@ -5,5 +5,12 @@ using UnityEngine;
 [CreateAssetMenu]
 public class SettingsSO : ScriptableObject
 {
-    public bool useBrush;
+    [SerializeField]
+    private bool _useBrush;
+
+    public bool UseBrush
+    {
+        get { return _useBrush; }
+        set { _useBrush = value; }
+    }
 }

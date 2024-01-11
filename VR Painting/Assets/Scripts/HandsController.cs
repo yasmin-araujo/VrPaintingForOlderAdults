@@ -12,8 +12,8 @@ public class HandsController : MonoBehaviour
 
     void Start()
     {
-        // leftBrush.SetActive(useBrush);
-        rightBrush.SetActive(settingsSO.useBrush);
+        // leftBrush.SetActive(settingsSO.useBrush);
+        rightBrush.SetActive(settingsSO.UseBrush);
     }
 
     public void InitializeHands(Material material, int color)

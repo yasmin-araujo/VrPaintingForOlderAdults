@@ -34,7 +34,6 @@ public class PalleteController : MonoBehaviour
         GameObject newPaint = Instantiate(paintPrefab, position, Quaternion.identity, GetComponent<Transform>());
         GameObject button = newPaint.GetComponent<Transform>().Find("Button").gameObject;
         GameObject buttonVisual = button.GetComponent<Transform>().Find("ButtonVisual").gameObject;
-        print(buttonVisual.GetComponent<Transform>().Find("Button").gameObject.GetComponent<MeshRenderer>().materials[0]);
         buttonVisual.GetComponent<Transform>().Find("Button").gameObject.GetComponent<MeshRenderer>().material = material;
         button.GetComponent<InteractableUnityEventWrapper>().WhenSelect.AddListener(() => SetColorToBrush(material, color));
 

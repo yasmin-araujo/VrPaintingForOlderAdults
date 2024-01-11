@@ -8,20 +8,20 @@ public class SettingsController : MonoBehaviour
     [SerializeField] private SettingsSO settingsSO;
     [SerializeField] private GameObject MainMenu;
     [SerializeField] private GameObject SettingsMenu;
-    private TextMeshPro brushText;
+    private TextMeshProUGUI brushText;
 
     void Start()
     {
         Transform[] children = SettingsMenu.GetComponentsInChildren<Transform>();
         foreach (Transform child in children)
         {
-            if (child.name == "BrushText")
+            if (child.name == "BrushStatusText")
             {
-                brushText = child.gameObject.GetComponent<TextMeshPro>();
+                brushText = child.gameObject.GetComponent<TextMeshProUGUI>();
                 break;
             }
         }
-        brushText.text = settingsSO.useBrush ? "Deactivate" : "Activate";
+        brushText.text = settingsSO.UseBrush ? "Deactivate" : "Activate";
     }
 
     public void SettingsButton(bool openSettings)
@@ -32,7 +32,7 @@ public class SettingsController : MonoBehaviour
 
     public void EnableBrush()
     {
-        settingsSO.useBrush = !settingsSO.useBrush;
-        brushText.text = settingsSO.useBrush ? "Deactivate" : "Activate";
+        settingsSO.UseBrush = !settingsSO.UseBrush;
+        brushText.text = settingsSO.UseBrush ? "Deactivate" : "Activate";
     }
 }
