@@ -956,8 +956,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 495142877}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+      - m_Target: {fileID: 495142878}
+        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
         m_MethodName: SettingsButton
         m_Mode: 6
         m_Arguments:
@@ -982,6 +982,7 @@ GameObject:
   - component: {fileID: 495142875}
   - component: {fileID: 495142874}
   - component: {fileID: 495142877}
+  - component: {fileID: 495142878}
   m_Layer: 0
   m_Name: PointableCanvasModule
   m_TagString: Untagged
@@ -1046,6 +1047,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedLevel: {fileID: 11400000, guid: 6bd8d72f29f6f6f4b9de4222ce9c4242, type: 2}
+--- !u!114 &495142878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495142873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d7029ead2453444aaf4b95431760f0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   settingsSO: {fileID: 11400000, guid: 36b53cbc31fc5db42ba390e585fecd39, type: 2}
   MainMenu: {fileID: 2904843611785296293}
   SettingsMenu: {fileID: 2140048588}
@@ -2209,13 +2222,13 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 495142877}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+      - m_Target: {fileID: 495142878}
+        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
         m_MethodName: EnableBrush
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1134096324}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2340,8 +2353,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 495142877}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+      - m_Target: {fileID: 495142878}
+        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
         m_MethodName: SettingsButton
         m_Mode: 6
         m_Arguments:
