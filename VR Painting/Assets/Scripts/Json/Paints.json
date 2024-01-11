@@ -29,6 +29,11 @@
             "id": 5,
             "name": "Gelb",
             "letter": "Ge"
+        },
+        {
+            "id": 6,
+            "name": "Rot",
+            "letter": "R"
         }
     ]
 }
