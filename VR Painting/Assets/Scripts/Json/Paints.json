@@ -19,6 +19,16 @@
             "id": 3,
             "name": "Pink",
             "letter": "P"
+        },
+        {
+            "id": 4,
+            "name": "Grün",
+            "letter": "G"
+        },
+        {
+            "id": 5,
+            "name": "Gelb",
+            "letter": "Ge"
         }
     ]
 }

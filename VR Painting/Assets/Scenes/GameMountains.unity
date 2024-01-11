@@ -877,9 +877,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedLevel: {fileID: 11400000, guid: 6bd8d72f29f6f6f4b9de4222ce9c4242, type: 2}
-  settingsSO: {fileID: 0}
-  MainMenu: {fileID: 0}
-  SettingsMenu: {fileID: 0}
 --- !u!114 &376011773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2920,6 +2917,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 036bc7535c6b3e242a16d78cbc3d014d, type: 2}
   - {fileID: 2100000, guid: 4aa0128f856fd91438465a66911e19e2, type: 2}
   - {fileID: 2100000, guid: b47a7f8685471a5409c32ff5fb111930, type: 2}
+  - {fileID: 2100000, guid: 1e49b74a579b7ca4c961a86c729867d9, type: 2}
+  - {fileID: 2100000, guid: d3ec6f91e92e6b24881e2a9c29c59169, type: 2}
   board: {fileID: 988004192}
   pallete: {fileID: 324516848}
   hands: {fileID: 573384185}
