@@ -14,11 +14,11 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject SettingsMenu;
 
     /* Main menu buttons */
-    public void PlayButton(bool isDesktop)
+    public void PlayButton()
     {
-        SceneManager.LoadSceneAsync(!isDesktop ? "LevelMenu" : "LevelMenuOld");
+        SceneManager.LoadSceneAsync("LevelMenu");
     }
-    
+
     public void SettingsButton(bool openSettings)
     {
         MainMenu.SetActive(!openSettings);

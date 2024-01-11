@@ -240,7 +240,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 495959750}
+      - m_Target: {fileID: 802417656}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: BackToMainMenuButton
         m_Mode: 1
@@ -1603,7 +1603,6 @@ GameObject:
   - component: {fileID: 495959753}
   - component: {fileID: 495959752}
   - component: {fileID: 495959751}
-  - component: {fileID: 495959750}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1635,20 +1634,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -0.1475}
   m_SizeDelta: {x: 780, y: 475.9111}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &495959750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495959748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c7f41dd6b2e4f148b404a79fad051a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedLevel: {fileID: 11400000, guid: 6bd8d72f29f6f6f4b9de4222ce9c4242, type: 2}
-  settingsSO: {fileID: 11400000, guid: 36b53cbc31fc5db42ba390e585fecd39, type: 2}
 --- !u!114 &495959751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2285,7 +2270,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 495959750}
+      - m_Target: {fileID: 802417656}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: LoadLevels
         m_Mode: 3
@@ -2981,8 +2966,8 @@ GameObject:
   - component: {fileID: 802417654}
   - component: {fileID: 802417653}
   - component: {fileID: 802417652}
-  - component: {fileID: 802417656}
   - component: {fileID: 802417655}
+  - component: {fileID: 802417656}
   m_Layer: 0
   m_Name: PointableCanvasModule
   m_TagString: Untagged
@@ -3061,7 +3046,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedLevel: {fileID: 11400000, guid: 6bd8d72f29f6f6f4b9de4222ce9c4242, type: 2}
-  settingsSO: {fileID: 0}
+  settingsSO: {fileID: 11400000, guid: 36b53cbc31fc5db42ba390e585fecd39, type: 2}
+  MainMenu: {fileID: 0}
+  SettingsMenu: {fileID: 0}
 --- !u!1 &805471561
 GameObject:
   m_ObjectHideFlags: 0
@@ -5590,7 +5577,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 495959750}
+      - m_Target: {fileID: 802417656}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: LoadLevels
         m_Mode: 3
@@ -5925,7 +5912,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 495959750}
+      - m_Target: {fileID: 802417656}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: LoadLevels
         m_Mode: 3
