@@ -22,7 +22,7 @@ public class SettingsController : MonoBehaviour
             }
         }
         settingsSO.UseBrush = false;
-        brushText.text = "No";
+        brushText.text = "Nein";
     }
 
     public void SettingsButton(bool openSettings)
@@ -34,6 +34,6 @@ public class SettingsController : MonoBehaviour
     public void EnableBrush()
     {
         settingsSO.UseBrush = !settingsSO.UseBrush;
-        brushText.text = settingsSO.UseBrush ? "Yes" : "No";
+        brushText.text = settingsSO.UseBrush ? "Ja" : "Nein";
     }
 }
