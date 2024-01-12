@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class SettingsController : MonoBehaviour
@@ -21,8 +20,7 @@ public class SettingsController : MonoBehaviour
                 break;
             }
         }
-        settingsSO.UseBrush = false;
-        brushText.text = "Nein";
+        brushText.text = settingsSO.UseBrush ? "Ja" : "Nein";
     }
 
     public void SettingsButton(bool openSettings)
@@ -35,5 +33,6 @@ public class SettingsController : MonoBehaviour
     {
         settingsSO.UseBrush = !settingsSO.UseBrush;
         brushText.text = settingsSO.UseBrush ? "Ja" : "Nein";
+        EditorUtility.SetDirty(settingsSO);
     }
 }
