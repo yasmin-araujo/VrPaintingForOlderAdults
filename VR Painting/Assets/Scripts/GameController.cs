@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private IntSO selectedLevel;
+    // [SerializeField] private IntSO selectedLevel;
+    [SerializeField] private IntSO drawingIndex;
     [SerializeField] private GallerySO gallerySO;
     [SerializeField] private SettingsSO settingsSO;
     [SerializeField] private List<Material> paintMaterials;
@@ -13,13 +14,12 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject pallete;
     [SerializeField] private GameObject hands;
     [SerializeField] private GameObject nextMenu;
-    private int drawingIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        gallerySO.gallery.drawings = gallerySO.gallery.drawings.Where(drawing => drawing.level == selectedLevel.Value).ToList();
-        print(gallerySO.gallery.drawings.Count);
+        // gallerySO.gallery.drawings = gallerySO.gallery.drawings.Where(drawing => drawing.level == selectedLevel.Value).ToList();
+        // print(gallerySO.gallery.drawings.Count);
 
         LoadNewGame();
     }
@@ -41,14 +41,14 @@ public class GameController : MonoBehaviour
 
     private void LoadNewGame()
     {
-        if (drawingIndex == gallerySO.gallery.drawings.Count)
-            drawingIndex = 0;
+        if (drawingIndex.Value == gallerySO.gallery.drawings.Count)
+            drawingIndex.Value = 0;
 
-        Drawing drawing = gallerySO.gallery.drawings[drawingIndex];
+        Drawing drawing = gallerySO.gallery.drawings[drawingIndex.Value];
         board.GetComponent<BoardController>().LoadDrawing(drawing, () => hands.GetComponent<HandsController>().handsMaterial, () => hands.GetComponent<HandsController>().paintColor);
         pallete.GetComponent<PalleteController>().LoadPaints(drawing.colors, paintMaterials, (material, color) => hands.GetComponent<HandsController>().InitializeHands(material, color));
         hands.GetComponent<HandsController>().InitializeHands(paintMaterials[drawing.colors[0]], drawing.colors[0]);
 
-        drawingIndex++;
+        drawingIndex.Value++;
     }
 }
