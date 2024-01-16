@@ -18,7 +18,7 @@ public class Gallery
 [System.Serializable]
 public class Drawing
 {
-    public int id;
+    public string id;
     public int level;
     public List<int> colors;
     public List<List<int>> matrix;
