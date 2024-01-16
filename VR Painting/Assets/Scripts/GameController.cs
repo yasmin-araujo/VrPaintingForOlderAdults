@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject board;
     [SerializeField] private GameObject pallete;
     [SerializeField] private GameObject hands;
+    [SerializeField] private GameObject innerCylinder;
     private int drawingIndex = 0;
 
     // Start is called before the first frame update
@@ -28,14 +29,20 @@ public class GameController : MonoBehaviour
         if (board.GetComponent<BoardController>().finished)
         {
             board.GetComponent<BoardController>().finished = false;
-            LoadNewGame();
+            innerCylinder.SetActive(true);
         }
+    }
+
+    public void NextDrawing()
+    {
+        innerCylinder.SetActive(false);
+        LoadNewGame();
     }
 
     private void LoadNewGame()
     {
         if (drawingIndex == gallerySO.gallery.drawings.Count)
-            return;
+            drawingIndex = 0;
 
         Drawing drawing = gallerySO.gallery.drawings[drawingIndex];
         board.GetComponent<BoardController>().LoadDrawing(drawing, () => hands.GetComponent<HandsController>().handsMaterial, () => hands.GetComponent<HandsController>().paintColor);
