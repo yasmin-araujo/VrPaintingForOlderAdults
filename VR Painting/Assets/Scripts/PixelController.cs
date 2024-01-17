@@ -18,7 +18,7 @@ public class PixelController : MonoBehaviour
             Transform pixelVisualTransform = GetComponent<Transform>().Find("PixelVisual").gameObject.GetComponent<Transform>();
             if (pixelVisualTransform.Find("ColorNumber").gameObject.GetComponent<TextMeshPro>().text == "")
                 return;
-            
+
             pixelVisualTransform.Find("Pixel").gameObject.GetComponent<Renderer>().material = GetHandsMaterial();
             pixelVisualTransform.Find("ColorNumber").gameObject.GetComponent<TextMeshPro>().text = "";
             pixelVisualTransform.Find("TopBorder").gameObject.SetActive(false);
@@ -29,19 +29,20 @@ public class PixelController : MonoBehaviour
         }
     }
 
-    private void HighlightPixelsFromColor(int color)
+    public void HighlightPixelsFromColor(Material material, int color)
     {
+        TextMeshPro TMP = GetComponent<Transform>().Find("PixelVisual").gameObject.GetComponent<Transform>().Find("ColorNumber").gameObject.GetComponent<TextMeshPro>();
         if (pixelColor == color)
         {
-            TextMeshPro TMP = GetComponent<Transform>().Find("ColorNumber").gameObject.GetComponent<TextMeshPro>();
             TMP.fontSize = 8;
             TMP.fontStyle = FontStyles.Bold;
+            TMP.color = material.GetColor("_Color");
         }
         else
         {
-            TextMeshPro TMP = GetComponent<Transform>().Find("ColorNumber").gameObject.GetComponent<TextMeshPro>();
             TMP.fontSize = 5;
             TMP.fontStyle = FontStyles.Normal;
+            TMP.color = Color.black;
         }
     }
 

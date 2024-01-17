@@ -46,9 +46,19 @@ public class GameController : MonoBehaviour
 
         Drawing drawing = gallerySO.gallery.drawings[drawingIndex.Value];
         board.GetComponent<BoardController>().LoadDrawing(drawing, () => hands.GetComponent<HandsController>().handsMaterial, () => hands.GetComponent<HandsController>().paintColor);
-        pallete.GetComponent<PalleteController>().LoadPaints(drawing.colors, paintMaterials, (material, color) => hands.GetComponent<HandsController>().InitializeHands(material, color));
+        pallete.GetComponent<PalleteController>().LoadPaints(drawing.colors, paintMaterials, (material, color) => SetColorToBrush(material, color));
         hands.GetComponent<HandsController>().InitializeHands(paintMaterials[drawing.colors[0]], drawing.colors[0]);
 
         drawingIndex.Value++;
+    }
+
+    private void SetColorToBrush(Material material, int color)
+    {
+        hands.GetComponent<HandsController>().InitializeHands(material, color);
+        
+        foreach (GameObject pixel in board.GetComponent<Transform>())
+        {
+            pixel.GetComponent<PixelController>().HighlightPixelsFromColor(material, color);
+        }
     }
 }
