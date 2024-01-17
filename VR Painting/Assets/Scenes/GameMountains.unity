@@ -1342,6 +1342,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedLevel: {fileID: 11400000, guid: 6bd8d72f29f6f6f4b9de4222ce9c4242, type: 2}
+  drawingIndex: {fileID: 0}
+  levelMenu: {fileID: 0}
+  drawingMenu: {fileID: 0}
 --- !u!114 &376011773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4059,7 +4062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6d3016c33e6eb468fd581a2b97a697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedLevel: {fileID: 11400000, guid: 6bd8d72f29f6f6f4b9de4222ce9c4242, type: 2}
+  drawingIndex: {fileID: 11400000, guid: 64e3de61778ba3545b0dd240d7b2986f, type: 2}
   gallerySO: {fileID: 11400000, guid: dc8e5a9a14ff3e041abe438758169e4b, type: 2}
   settingsSO: {fileID: 11400000, guid: 36b53cbc31fc5db42ba390e585fecd39, type: 2}
   paintMaterials:

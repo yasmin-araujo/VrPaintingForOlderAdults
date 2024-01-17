@@ -313,7 +313,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
   _clearStateOnDrag: 0
 --- !u!222 &8513219272641225338
 CanvasRenderer:

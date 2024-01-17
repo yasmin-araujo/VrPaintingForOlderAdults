@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using Oculus.Interaction;
 using TMPro;
@@ -12,30 +10,25 @@ public class LevelListingController : MonoBehaviour
     [SerializeField] private GameObject levelPreviewPrefab;
     [SerializeField] private GameObject difficultyTitle;
     [SerializeField] private GameObject listViewport;
-    [SerializeField] private Sprite sprite;
-
-    void Start()
-    {
-
-    }
 
     public void ListLevels(int difficulty)
     {
         ClearList();
-        difficultyTitle.GetComponent<TextMeshPro>().text = GetDifficultyName(difficulty);
+        difficultyTitle.GetComponent<TextMeshProUGUI>().text = GetDifficultyName(difficulty);
         gallerySO.gallery.drawings = gallerySO.gallery.drawings.Where(drawing => drawing.level == difficulty).ToList();
 
         for (int i = 0; i < gallerySO.gallery.drawings.Count; i++)
         {
             Vector3 position = new Vector3(0, 0, 0);
-            CreateButton(position, i);
+            CreateButton(position, i, gallerySO.gallery.drawings[i].id);
         }
     }
 
-    private void CreateButton(Vector3 position, int index)
+    private void CreateButton(Vector3 position, int index, string spriteName)
     {
         GameObject newButton = Instantiate(levelPreviewPrefab, position, Quaternion.identity, listViewport.GetComponent<Transform>());
-        newButton.GetComponent<Transform>().Find("Image").gameObject.GetComponent<Image>().sprite = sprite;
+        Sprite sp = Resources.Load<Sprite>("Sprites/" + spriteName);
+        newButton.GetComponent<Transform>().Find("Image").gameObject.GetComponent<Image>().sprite = sp;
         newButton.GetComponent<ToggleDeselect>().onValueChanged.AddListener((_) => GetComponent<MenuController>().LoadDrawing(index));
     }
 
