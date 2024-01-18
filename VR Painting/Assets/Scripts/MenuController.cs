@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Oculus.Interaction;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,12 +31,15 @@ public class MenuController : MonoBehaviour
         drawingMenu.SetActive(false);
     }
 
-    public void LoadLevels(int difficulty)
+    public void LoadLevels(GameObject button)
     {
-        print("Loading level " + difficulty);
+        // Avoids triggering the button when isOn is reset
+        if (!button.GetComponent<ToggleDeselect>().isOn)
+            return;
+        int difficulty = button.GetComponent<LevelButtonController>().levelDifficulty;
         selectedLevel.Value = difficulty;
-        levelMenu.SetActive(false);
         drawingMenu.SetActive(true);
+        levelMenu.SetActive(false);
 
         GetComponent<LevelListingController>().ListLevels(difficulty);
     }

@@ -1173,9 +1173,9 @@ RectTransform:
   - {fileID: 1709432947}
   m_Father: {fileID: 1355640540}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 180, y: -48.900185}
   m_SizeDelta: {x: 240, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &357131190
@@ -2483,8 +2483,9 @@ GameObject:
   - component: {fileID: 647846577}
   - component: {fileID: 647846576}
   - component: {fileID: 647846575}
+  - component: {fileID: 647846578}
   m_Layer: 5
-  m_Name: Toggle (2)
+  m_Name: ButtonHard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2591,10 +2592,10 @@ MonoBehaviour:
       - m_Target: {fileID: 802417656}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: LoadLevels
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 647846573}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2602,6 +2603,19 @@ MonoBehaviour:
         m_CallState: 2
   m_IsOn: 1
   _clearStateOnDrag: 0
+--- !u!114 &647846578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647846573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18294d2f52028f140a251265f5791201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelDifficulty: 2
 --- !u!1 &658340807
 GameObject:
   m_ObjectHideFlags: 0
@@ -3418,7 +3432,6 @@ MonoBehaviour:
   levelPreviewPrefab: {fileID: 6783834642240937612, guid: 79ffa5103a20da6479021c76c5d17f2e, type: 3}
   difficultyTitle: {fileID: 1922639442}
   listViewport: {fileID: 961504906}
-  sprite: {fileID: 21300000, guid: 0e75f56d97a87ee448db54ae38494fc7, type: 3}
 --- !u!1 &805471561
 GameObject:
   m_ObjectHideFlags: 0
@@ -4128,10 +4141,10 @@ RectTransform:
   - {fileID: 1922639443}
   m_Father: {fileID: 1806877941}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 390, y: -90.15518}
+  m_SizeDelta: {x: 748, y: 148.31036}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1101773454
 MonoBehaviour:
@@ -4442,10 +4455,10 @@ RectTransform:
   - {fileID: 961504907}
   m_Father: {fileID: 1806877941}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 390, y: -263.21054}
+  m_SizeDelta: {x: 748, y: 197.80037}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1198751914
 MonoBehaviour:
@@ -5297,7 +5310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1345255748
 Transform:
   m_ObjectHideFlags: 0
@@ -5580,10 +5593,10 @@ RectTransform:
   - {fileID: 357131189}
   m_Father: {fileID: 1806877941}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 390, y: -411.0109}
+  m_SizeDelta: {x: 748, y: 97.80037}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1355640541
 MonoBehaviour:
@@ -7086,8 +7099,9 @@ GameObject:
   - component: {fileID: 1742698895}
   - component: {fileID: 1742698894}
   - component: {fileID: 1742698893}
+  - component: {fileID: 1742698896}
   m_Layer: 5
-  m_Name: Toggle (1)
+  m_Name: ButtonMedium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7194,10 +7208,10 @@ MonoBehaviour:
       - m_Target: {fileID: 802417656}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: LoadLevels
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1742698891}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7205,6 +7219,19 @@ MonoBehaviour:
         m_CallState: 2
   m_IsOn: 0
   _clearStateOnDrag: 0
+--- !u!114 &1742698896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742698891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18294d2f52028f140a251265f5791201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelDifficulty: 1
 --- !u!1 &1806877940
 GameObject:
   m_ObjectHideFlags: 0
@@ -7815,10 +7842,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1101773453}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 374, y: -50.255}
+  m_SizeDelta: {x: 716, y: 100.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1922639444
 MonoBehaviour:
@@ -7929,8 +7956,9 @@ GameObject:
   - component: {fileID: 1988611298}
   - component: {fileID: 1988611297}
   - component: {fileID: 1988611296}
+  - component: {fileID: 1988611299}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: ButtonEasy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8037,10 +8065,10 @@ MonoBehaviour:
       - m_Target: {fileID: 802417656}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: LoadLevels
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1988611294}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8048,6 +8076,19 @@ MonoBehaviour:
         m_CallState: 2
   m_IsOn: 0
   _clearStateOnDrag: 0
+--- !u!114 &1988611299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988611294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18294d2f52028f140a251265f5791201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelDifficulty: 0
 --- !u!1 &2066542757
 GameObject:
   m_ObjectHideFlags: 0
