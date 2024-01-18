@@ -12,7 +12,7 @@ public class JsonReader : MonoBehaviour
 
     private void Start() {
         LoadFromJson();
-        print(gallerySO.gallery.drawings.Count);
+        // print(gallerySO.gallery.drawings.Count);
     }
 
     public void LoadFromJson()

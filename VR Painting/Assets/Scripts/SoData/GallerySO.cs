@@ -6,6 +6,7 @@ using UnityEngine;
 public class GallerySO : ScriptableObject
 {
     public Gallery gallery;
+    public Gallery currentSelection;
 }
 
 

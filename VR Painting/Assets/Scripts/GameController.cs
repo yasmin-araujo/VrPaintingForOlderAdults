@@ -41,10 +41,10 @@ public class GameController : MonoBehaviour
 
     private void LoadNewGame()
     {
-        if (drawingIndex.Value == gallerySO.gallery.drawings.Count)
+        if (drawingIndex.Value == gallerySO.currentSelection.drawings.Count)
             drawingIndex.Value = 0;
 
-        Drawing drawing = gallerySO.gallery.drawings[drawingIndex.Value];
+        Drawing drawing = gallerySO.currentSelection.drawings[drawingIndex.Value];
         board.GetComponent<BoardController>().LoadDrawing(drawing, () => hands.GetComponent<HandsController>().handsMaterial, () => hands.GetComponent<HandsController>().paintColor);
         pallete.GetComponent<PalleteController>().LoadPaints(drawing.colors, paintMaterials, (material, color) => SetColorToBrush(material, color));
         hands.GetComponent<HandsController>().InitializeHands(paintMaterials[drawing.colors[0]], drawing.colors[0]);

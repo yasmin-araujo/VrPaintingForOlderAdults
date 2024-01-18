@@ -15,12 +15,12 @@ public class LevelListingController : MonoBehaviour
     {
         ClearList();
         difficultyTitle.GetComponent<TextMeshProUGUI>().text = GetDifficultyName(difficulty);
-        gallerySO.gallery.drawings = gallerySO.gallery.drawings.Where(drawing => drawing.level == difficulty).ToList();
+        gallerySO.currentSelection.drawings = gallerySO.gallery.drawings.Where(drawing => drawing.level == difficulty).ToList();
 
-        for (int i = 0; i < gallerySO.gallery.drawings.Count; i++)
+        for (int i = 0; i < gallerySO.currentSelection.drawings.Count; i++)
         {
-            Vector3 position = new Vector3(0, 0, 0);
-            CreateButton(position, i, gallerySO.gallery.drawings[i].id);
+            Vector3 position = listViewport.GetComponent<Transform>().position;
+            CreateButton(position, i, gallerySO.currentSelection.drawings[i].id);
         }
     }
 
