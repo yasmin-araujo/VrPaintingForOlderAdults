@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour
         Drawing drawing = gallerySO.currentSelection.drawings[drawingIndex.Value];
         board.GetComponent<BoardController>().LoadDrawing(drawing, () => hands.GetComponent<HandsController>().handsMaterial, () => hands.GetComponent<HandsController>().paintColor);
         pallete.GetComponent<PalleteController>().LoadPaints(drawing.colors, paintMaterials, (material, color) => SetColorToBrush(material, color));
-        hands.GetComponent<HandsController>().InitializeHands(paintMaterials[drawing.colors[0]], drawing.colors[0]);
+        SetColorToBrush(paintMaterials[drawing.colors[0]], drawing.colors[0]);
 
         drawingIndex.Value++;
     }
@@ -55,11 +55,12 @@ public class GameController : MonoBehaviour
     private void SetColorToBrush(Material material, int color)
     {
         hands.GetComponent<HandsController>().InitializeHands(material, color);
-        
+
         Transform[] children = board.GetComponentsInChildren<Transform>();
         foreach (Transform child in children)
         {
-            child.gameObject.GetComponent<PixelController>().HighlightPixelsFromColor(material, color);
+            if (child.gameObject.tag == "PixelTag")
+                child.gameObject.GetComponent<PixelController>().HighlightPixelsFromColor(material, color);
         }
     }
 }

@@ -34,7 +34,7 @@ public class PixelController : MonoBehaviour
         TextMeshPro TMP = GetComponent<Transform>().Find("PixelVisual").gameObject.GetComponent<Transform>().Find("ColorNumber").gameObject.GetComponent<TextMeshPro>();
         if (pixelColor == color)
         {
-            TMP.fontSize = 8;
+            TMP.fontSize = 6.5F;
             TMP.fontStyle = FontStyles.Bold;
             TMP.color = material.GetColor("_Color");
         }

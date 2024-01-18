@@ -927,7 +927,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: fac8e72c3f24403419c0983fba874e6c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -984,8 +984,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactableView: {fileID: 1442903258663008962}
   _renderer: {fileID: 476797787806660788}
-  _normalColor: {r: 1, g: 1, b: 1, a: 1}
-  _hoverColor: {r: 1, g: 1, b: 1, a: 1}
+  _normalColor: {r: 0.764151, g: 0.764151, b: 0.7647059, a: 1}
+  _hoverColor: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
   _selectColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   _disabledColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &8551758128115191882
