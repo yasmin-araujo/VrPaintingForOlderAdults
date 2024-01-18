@@ -56,9 +56,10 @@ public class GameController : MonoBehaviour
     {
         hands.GetComponent<HandsController>().InitializeHands(material, color);
         
-        foreach (GameObject pixel in board.GetComponent<Transform>())
+        Transform[] children = board.GetComponentsInChildren<Transform>();
+        foreach (Transform child in children)
         {
-            pixel.GetComponent<PixelController>().HighlightPixelsFromColor(material, color);
+            child.gameObject.GetComponent<PixelController>().HighlightPixelsFromColor(material, color);
         }
     }
 }

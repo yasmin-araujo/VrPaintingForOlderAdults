@@ -36,6 +36,7 @@ public class MenuController : MonoBehaviour
         // Avoids triggering the button when isOn is reset
         if (!button.GetComponent<ToggleDeselect>().isOn)
             return;
+        button.GetComponent<ToggleDeselect>().isOn = false;
         int difficulty = button.GetComponent<LevelButtonController>().levelDifficulty;
         selectedLevel.Value = difficulty;
         drawingMenu.SetActive(true);
