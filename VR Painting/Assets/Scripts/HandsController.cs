@@ -6,14 +6,18 @@ public class HandsController : MonoBehaviour
 {
     [SerializeField] private GameObject leftBrush;
     [SerializeField] private GameObject rightBrush;
+    [SerializeField] private GameObject leftFinger;
+    [SerializeField] private GameObject rightFinger;
     [SerializeField] private SettingsSO settingsSO;
     public Material handsMaterial;
     public int paintColor;
 
     void Start()
     {
-        // leftBrush.SetActive(settingsSO.useBrush);
-        rightBrush.SetActive(settingsSO.UseBrush);
+        rightFinger.SetActive(!settingsSO.UseBrush);
+        leftFinger.SetActive(!settingsSO.UseBrush);
+        rightBrush.SetActive(settingsSO.UseBrush && !settingsSO.LeftHand);
+        leftBrush.SetActive(settingsSO.UseBrush && settingsSO.LeftHand);
     }
 
     public void InitializeHands(Material material, int color)
