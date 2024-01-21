@@ -12,15 +12,25 @@ public class SettingsController : MonoBehaviour
 
     void Start()
     {
+        int flag = 0;
         Transform[] children = SettingsMenu.GetComponentsInChildren<Transform>();
         foreach (Transform child in children)
         {
             if (child.name == "BrushStatusText")
             {
                 brushText = child.gameObject.GetComponent<TextMeshProUGUI>();
-                break;
+                flag++;
             }
+            else if (child.name == "MainHandText")
+            {
+                mainHandText = child.gameObject.GetComponent<TextMeshProUGUI>();
+                flag++;
+            }
+
+            if (flag >= 2)
+                break;
         }
+
         brushText.text = settingsSO.UseBrush ? "Ja" : "Nein";
         mainHandText.text = settingsSO.LeftHand ? "Links" : "Rechts";
     }
