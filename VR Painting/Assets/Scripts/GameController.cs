@@ -41,15 +41,14 @@ public class GameController : MonoBehaviour
         {
             if (child.name == "NextDrawing")
             {
-                Sprite sp = Resources.Load<Sprite>("Sprites/" + gallerySO.currentSelection.drawings[drawingIndex.Value].id);
-                child.gameObject.GetComponent<Image>().sprite = sp;
+                string drawingName = gallerySO.currentSelection.drawings[drawingIndex.Value % gallerySO.currentSelection.drawings.Count].id;
+                child.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/" + drawingName);
                 flag++;
             }
             else if (child.name == "FinishedDrawing")
             {
                 string drawingName = gallerySO.currentSelection.drawings[(drawingIndex.Value - 1 >= 0 ? drawingIndex.Value : gallerySO.currentSelection.drawings.Count) - 1].id;
-                Sprite sp = Resources.Load<Sprite>("Sprites/" + drawingName);
-                child.gameObject.GetComponent<Image>().sprite = sp;
+                child.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/" + drawingName);
                 flag++;
             }
 
