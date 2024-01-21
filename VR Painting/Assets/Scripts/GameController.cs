@@ -1,11 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    // [SerializeField] private IntSO selectedLevel;
     [SerializeField] private IntSO drawingIndex;
     [SerializeField] private GallerySO gallerySO;
     [SerializeField] private SettingsSO settingsSO;
@@ -18,9 +19,6 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // gallerySO.gallery.drawings = gallerySO.gallery.drawings.Where(drawing => drawing.level == selectedLevel.Value).ToList();
-        // print(gallerySO.gallery.drawings.Count);
-
         LoadNewGame();
     }
 
@@ -29,13 +27,41 @@ public class GameController : MonoBehaviour
         if (board.GetComponent<BoardController>().finished)
         {
             board.GetComponent<BoardController>().finished = false;
-            nextMenu.SetActive(true);
+            ShowNextDrawingMenu();
         }
     }
 
-    public void NextDrawing()
+    public void ShowNextDrawingMenu()
+    {
+        nextMenu.SetActive(true);
+        board.SetActive(false);
+        int flag = 0;
+        Transform[] children = nextMenu.GetComponentsInChildren<Transform>();
+        foreach (Transform child in children)
+        {
+            if (child.name == "NextDrawing")
+            {
+                string drawingName = gallerySO.currentSelection.drawings[(drawingIndex.Value + 1) % gallerySO.currentSelection.drawings.Count].id;
+                Sprite sp = Resources.Load<Sprite>("Sprites/" + drawingName);
+                child.gameObject.GetComponent<Image>().sprite = sp;
+                flag++;
+            }
+            else if (child.name == "FinishedDrawing")
+            {
+                Sprite sp = Resources.Load<Sprite>("Sprites/" + gallerySO.currentSelection.drawings[drawingIndex.Value].id);
+                child.gameObject.GetComponent<Image>().sprite = sp;
+                flag++;
+            }
+
+            if (flag >= 2)
+                break;
+        }
+    }
+
+    public void GoToNextDrawing()
     {
         nextMenu.SetActive(false);
+        board.SetActive(true);
         LoadNewGame();
     }
 
