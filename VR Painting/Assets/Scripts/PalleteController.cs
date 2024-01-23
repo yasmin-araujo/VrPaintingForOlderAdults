@@ -18,7 +18,7 @@ public class PalleteController : MonoBehaviour
 
         Vector3 posPallete = GetComponent<Transform>().position;
         // redo size
-        float paintSize = 0.25F;//paintPrefab.GetComponent<RectTransform>().sizeDelta.x + 1;
+        float paintSize = 0.20F;//paintPrefab.GetComponent<RectTransform>().sizeDelta.x + 1;
 
         for (int i = 0; i < paintsIndex.Count; i++)
         {
