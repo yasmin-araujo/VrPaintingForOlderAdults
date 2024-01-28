@@ -28,6 +28,10 @@ public class PixelController : MonoBehaviour
         if (pixelColor == GetHandsColor())
         {
             pixelText.text = "";
+            pixelVisualTransform.Find("TopBorder").gameObject.SetActive(false);
+            pixelVisualTransform.Find("BottomBorder").gameObject.SetActive(false);
+            pixelVisualTransform.Find("LeftBorder").gameObject.SetActive(false);
+            pixelVisualTransform.Find("RightBorder").gameObject.SetActive(false);
             IncrementProgress();
         }
         else if (!fromThreshold)
@@ -43,10 +47,6 @@ public class PixelController : MonoBehaviour
             pixelText.color = GetHandsColor() == 0 ? Color.white : Color.black;
         }
 
-        pixelVisualTransform.Find("TopBorder").gameObject.SetActive(false);
-        pixelVisualTransform.Find("BottomBorder").gameObject.SetActive(false);
-        pixelVisualTransform.Find("LeftBorder").gameObject.SetActive(false);
-        pixelVisualTransform.Find("RightBorder").gameObject.SetActive(false);
         pixelVisualTransform.Find("Pixel").gameObject.GetComponent<Renderer>().material = GetHandsMaterial();
         currentColor = GetHandsColor();
     }
