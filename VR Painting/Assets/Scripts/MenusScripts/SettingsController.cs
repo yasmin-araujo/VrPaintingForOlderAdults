@@ -9,6 +9,7 @@ public class SettingsController : MonoBehaviour
     [SerializeField] private GameObject SettingsMenu;
     private TextMeshProUGUI brushText;
     private TextMeshProUGUI mainHandText;
+    private TextMeshProUGUI assistanceText;
 
     void Start()
     {
@@ -26,13 +27,19 @@ public class SettingsController : MonoBehaviour
                 mainHandText = child.gameObject.GetComponent<TextMeshProUGUI>();
                 flag++;
             }
+            else if (child.name == "AssistanceStatusText")
+            {
+                assistanceText = child.gameObject.GetComponent<TextMeshProUGUI>();
+                flag++;
+            }
 
-            if (flag >= 2)
+            if (flag >= 3)
                 break;
         }
 
         brushText.text = settingsSO.UseBrush ? "Ja" : "Nein";
         mainHandText.text = settingsSO.LeftHand ? "Links" : "Rechts";
+        assistanceText.text = settingsSO.UseAssistance ? "Ja" : "Nein";
     }
 
     public void SettingsButton(bool openSettings)
@@ -52,6 +59,13 @@ public class SettingsController : MonoBehaviour
     {
         settingsSO.LeftHand = !settingsSO.LeftHand;
         mainHandText.text = settingsSO.LeftHand ? "Links" : "Rechts";
+        EditorUtility.SetDirty(settingsSO);
+    }
+
+    public void EnableAssistance()
+    {
+        settingsSO.UseAssistance = !settingsSO.UseAssistance;
+        assistanceText.text = settingsSO.UseAssistance ? "Ja" : "Nein";
         EditorUtility.SetDirty(settingsSO);
     }
 }
