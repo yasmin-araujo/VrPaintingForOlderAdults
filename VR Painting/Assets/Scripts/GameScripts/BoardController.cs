@@ -10,13 +10,30 @@ public class BoardController : MonoBehaviour
 {
     [SerializeField] private GameObject pixelPrefab;
     [SerializeField] private PalleteSO palleteSO;
+    [SerializeField] private GameObject boardTarget;
 
     private float boardHeight;
     private float boardWidth;
     private int progress = 0;
     private bool useAssistance;
+    [SerializeField] private Vector3 defaultPosition;
 
     public bool finished = false;
+    public bool isBoardTracked = false;
+
+    void Update()
+    {
+        if (isBoardTracked)
+        {
+            GetComponent<Transform>().position = boardTarget.GetComponent<Transform>().position;
+            GetComponent<Transform>().rotation = boardTarget.GetComponent<Transform>().rotation;
+        }
+        else
+        {
+            GetComponent<Transform>().position = defaultPosition;
+            GetComponent<Transform>().rotation = Quaternion.identity;
+        }
+    }
 
     public void LoadDrawing(Drawing drawing, Func<Material> GetHandsMaterial, Func<int> GetHandsColor, bool assistance)
     {
