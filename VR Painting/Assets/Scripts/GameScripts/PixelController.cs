@@ -13,7 +13,7 @@ public class PixelController : MonoBehaviour
 
     public Action IncrementProgress;
 
-    public void PaintPixel(Func<Material> GetHandsMaterial, Func<int> GetHandsColor)
+    public void PaintPixel(Func<Material> GetHandsMaterial, Func<int> GetHandsColor, bool fromAssistance)
     {
         // Pixel not elegible to be painted
         if (useAssistance && pixelColor != GetHandsColor())
@@ -30,13 +30,17 @@ public class PixelController : MonoBehaviour
             pixelText.text = "";
             IncrementProgress();
         }
-        else if (GetHandsColor() == 0) // Black
+        else if (!fromAssistance) 
         {
-            pixelText.color = Color.white;
+            // When the assistance is off and the color is wrong, the function has to be called from the 
+            // AssistanceController in order to paint the pixel. This allows us to define a threshold
+            // when painting the wrong pixels.
+            return;
         }
         else
         {
-            pixelText.color = Color.black;
+            // Ensures contrast in case pixel will be painted with black
+            pixelText.color = GetHandsColor() == 0 ? Color.white : Color.black;
         }
 
         pixelVisualTransform.Find("TopBorder").gameObject.SetActive(false);
@@ -70,7 +74,7 @@ public class PixelController : MonoBehaviour
         if (other.gameObject.tag == "HandTag")
         {
             HandCollisionController handCol = other.gameObject.GetComponent<HandCollisionController>();
-            PaintPixel(handCol.GetHandMaterial, handCol.GetHandPaintColor);
+            PaintPixel(handCol.GetHandMaterial, handCol.GetHandPaintColor, false);
         }
     }
 }
