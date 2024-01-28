@@ -14,13 +14,15 @@ public class BoardController : MonoBehaviour
     private float boardHeight;
     private float boardWidth;
     private int progress = 0;
+    private bool useAssistance;
 
     public bool finished = false;
 
-    public void LoadDrawing(Drawing drawing, Func<Material> GetHandsMaterial, Func<int> GetHandsColor)
+    public void LoadDrawing(Drawing drawing, Func<Material> GetHandsMaterial, Func<int> GetHandsColor, bool assistance)
     {
         ClearBoard();
         progress = 0;
+        useAssistance = assistance;
 
         boardHeight = drawing.matrix.Count;
         boardWidth = drawing.matrix[0].Count;
@@ -48,6 +50,7 @@ public class BoardController : MonoBehaviour
         pixCont.pixelColor = pixelColor;
         pixCont.row = row;
         pixCont.column = column;
+        pixCont.useAssistance = useAssistance;
         pixCont.IncrementProgress = () =>
         {
             progress++;

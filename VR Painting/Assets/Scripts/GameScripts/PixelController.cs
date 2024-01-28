@@ -8,25 +8,41 @@ public class PixelController : MonoBehaviour
 {
     public int pixelColor;
     public int row, column;
+    public bool useAssistance;
 
     public Action IncrementProgress;
 
     public void PaintPixel(Func<Material> GetHandsMaterial, Func<int> GetHandsColor)
     {
+        // Pixel not elegible to be painted
+        if (useAssistance && pixelColor != GetHandsColor())
+            return;
+
+        // Check if pixel already has the right color
+        Transform pixelVisualTransform = GetComponent<Transform>().Find("PixelVisual").gameObject.GetComponent<Transform>();
+        TextMeshPro pixelText = pixelVisualTransform.Find("ColorNumber").gameObject.GetComponent<TextMeshPro>();
+        if (pixelText.text == "")
+            return;
+
         if (pixelColor == GetHandsColor())
         {
-            Transform pixelVisualTransform = GetComponent<Transform>().Find("PixelVisual").gameObject.GetComponent<Transform>();
-            if (pixelVisualTransform.Find("ColorNumber").gameObject.GetComponent<TextMeshPro>().text == "")
-                return;
-
-            pixelVisualTransform.Find("Pixel").gameObject.GetComponent<Renderer>().material = GetHandsMaterial();
-            pixelVisualTransform.Find("ColorNumber").gameObject.GetComponent<TextMeshPro>().text = "";
-            pixelVisualTransform.Find("TopBorder").gameObject.SetActive(false);
-            pixelVisualTransform.Find("BottomBorder").gameObject.SetActive(false);
-            pixelVisualTransform.Find("LeftBorder").gameObject.SetActive(false);
-            pixelVisualTransform.Find("RightBorder").gameObject.SetActive(false);
-            IncrementProgress();
+            pixelText.text = "";
         }
+        else if (GetHandsColor() == 0) // Black
+        {
+            pixelText.color = Color.white;
+        }
+        else 
+        {
+            pixelText.color = Color.black;
+        }
+
+        pixelVisualTransform.Find("TopBorder").gameObject.SetActive(false);
+        pixelVisualTransform.Find("BottomBorder").gameObject.SetActive(false);
+        pixelVisualTransform.Find("LeftBorder").gameObject.SetActive(false);
+        pixelVisualTransform.Find("RightBorder").gameObject.SetActive(false);
+        pixelVisualTransform.Find("Pixel").gameObject.GetComponent<Renderer>().material = GetHandsMaterial();
+        IncrementProgress();
     }
 
     public void HighlightPixelsFromColor(Material material, int color)
