@@ -17,14 +17,14 @@ public class BoardController : MonoBehaviour
     private int progress = 0;
     private bool useAssistance;
     private Vector3 defaultPosition;
-    private Vector3 extraRotation = new Vector3(90, 0, 0);
+    [SerializeField] private Vector3 extraRotation = new Vector3(90, 0, 0);
 
     public bool finished = false;
     public bool isBoardTracked = false;
 
     void Start()
     {
-        defaultPosition = GetComponent<Transform>().parent.position;
+        defaultPosition = GetComponent<Transform>().parent.position + new Vector3(0, 0, -0.1F);
     }
 
     void Update()
