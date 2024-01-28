@@ -17,22 +17,23 @@ public class BoardController : MonoBehaviour
     private int progress = 0;
     private bool useAssistance;
     private Vector3 defaultPosition;
-    [SerializeField] private Vector3 extraRotation = new Vector3(90, 0, 0);
+    [SerializeField] private Vector3 extraRotation;
+    [SerializeField] private Vector3 extraPosition;
 
     public bool finished = false;
     public bool isBoardTracked = false;
 
     void Start()
     {
-        defaultPosition = GetComponent<Transform>().parent.position + new Vector3(0, 0, -0.1F);
+        defaultPosition = GetComponent<Transform>().parent.position + new Vector3(0, 0, 0.1F);
     }
 
     void Update()
     {
         if (isBoardTracked)
         {
-            GetComponent<Transform>().position = boardTarget.GetComponent<Transform>().position;
-            GetComponent<Transform>().eulerAngles = boardTarget.GetComponent<Transform>().eulerAngles + extraRotation;
+            GetComponent<Transform>().position = boardTarget.GetComponent<Transform>().position + extraPosition;
+            GetComponent<Transform>().eulerAngles = new Vector3(-boardTarget.GetComponent<Transform>().eulerAngles.x + extraRotation.x, 0, 0);
         }
         else
         {
