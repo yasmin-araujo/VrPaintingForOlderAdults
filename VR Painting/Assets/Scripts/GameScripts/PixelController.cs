@@ -9,6 +9,7 @@ public class PixelController : MonoBehaviour
     public int pixelColor;
     public int row, column;
     public bool useAssistance;
+    private int currentColor;
 
     public Action IncrementProgress;
 
@@ -27,12 +28,13 @@ public class PixelController : MonoBehaviour
         if (pixelColor == GetHandsColor())
         {
             pixelText.text = "";
+            IncrementProgress();
         }
         else if (GetHandsColor() == 0) // Black
         {
             pixelText.color = Color.white;
         }
-        else 
+        else
         {
             pixelText.color = Color.black;
         }
@@ -42,7 +44,7 @@ public class PixelController : MonoBehaviour
         pixelVisualTransform.Find("LeftBorder").gameObject.SetActive(false);
         pixelVisualTransform.Find("RightBorder").gameObject.SetActive(false);
         pixelVisualTransform.Find("Pixel").gameObject.GetComponent<Renderer>().material = GetHandsMaterial();
-        IncrementProgress();
+        currentColor = GetHandsColor();
     }
 
     public void HighlightPixelsFromColor(Material material, int color)
@@ -58,7 +60,8 @@ public class PixelController : MonoBehaviour
         {
             TMP.fontSize = 5;
             TMP.fontStyle = FontStyles.Normal;
-            TMP.color = Color.black;
+            // Ensures there's contrast in case pixel is colored with black
+            TMP.color = currentColor == 0 ? Color.white : Color.black;
         }
     }
 
