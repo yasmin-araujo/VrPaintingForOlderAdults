@@ -53,8 +53,10 @@ public class PalleteController : MonoBehaviour
     {
         GameObject newPaint = Instantiate(paintBucketPrefab, position, Quaternion.identity, GetComponent<Transform>());
         GameObject bucket = newPaint.GetComponent<Transform>().Find("Bucket").gameObject;
-        bucket.GetComponent<Transform>().Find("BucketPaint").gameObject.GetComponent<MeshRenderer>().material = material;
         bucket.GetComponent<Transform>().Find("BucketLabel").gameObject.GetComponent<MeshRenderer>().material = material;
+        GameObject bucketPaint = bucket.GetComponent<Transform>().Find("BucketPaint").gameObject;
+        bucketPaint.GetComponent<MeshRenderer>().material = material;
+        bucketPaint.GetComponent<BucketController>().SetColorToBrush = () => SetColorToBrush(material, color);
         return newPaint;
     }
 
