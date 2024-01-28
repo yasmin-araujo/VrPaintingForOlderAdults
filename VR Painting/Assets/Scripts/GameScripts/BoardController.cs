@@ -83,8 +83,8 @@ public class BoardController : MonoBehaviour
         // });
 
         CheckBorders(row, column, drawing.matrix[row][column], transform, drawing.matrix);
-        GameObject pxlAssistance = transform.Find("Pixel").gameObject.GetComponent<Transform>().Find("PixelAssistance").gameObject;
-        pxlAssistance.SetActive(useAssistance);
+        GameObject pxlThreshold = transform.Find("Pixel").gameObject.GetComponent<Transform>().Find("PixelThreshold").gameObject;
+        pxlThreshold.SetActive(!useAssistance);
     }
 
     private void CheckBorders(int row, int column, int originalPixelColor, Transform transform, List<List<int>> matrix)

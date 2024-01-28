@@ -9,11 +9,11 @@ public class PixelController : MonoBehaviour
     public int pixelColor;
     public int row, column;
     public bool useAssistance;
-    private int currentColor;
+    private int currentColor = -1;
 
     public Action IncrementProgress;
 
-    public void PaintPixel(Func<Material> GetHandsMaterial, Func<int> GetHandsColor, bool fromAssistance)
+    public void PaintPixel(Func<Material> GetHandsMaterial, Func<int> GetHandsColor, bool fromThreshold)
     {
         // Pixel not elegible to be painted
         if (useAssistance && pixelColor != GetHandsColor())
@@ -30,10 +30,10 @@ public class PixelController : MonoBehaviour
             pixelText.text = "";
             IncrementProgress();
         }
-        else if (!fromAssistance) 
+        else if (!fromThreshold)
         {
             // When the assistance is off and the color is wrong, the function has to be called from the 
-            // AssistanceController in order to paint the pixel. This allows us to define a threshold
+            // ThresholdController in order to paint the pixel. This allows us to define a threshold
             // when painting the wrong pixels.
             return;
         }

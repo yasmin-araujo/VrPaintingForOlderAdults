@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AssistanceController : MonoBehaviour
+public class ThresholdController : MonoBehaviour
 {
     [SerializeField] GameObject pixelPrefab;
 
