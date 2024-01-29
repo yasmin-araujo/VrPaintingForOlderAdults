@@ -124,7 +124,8 @@ public class BoardController : MonoBehaviour
     public void SetBoardPosition(GameObject gameObject)
     {
         GetComponent<Transform>().position = gameObject.GetComponent<Transform>().position + extraPosition;
-        GetComponent<Transform>().eulerAngles = new Vector3(-gameObject.GetComponent<Transform>().eulerAngles.x + extraRotation.x, 0, gameObject.GetComponent<Transform>().eulerAngles.z + extraRotation.z);
+        GetComponent<Transform>().eulerAngles = new Vector3(extraRotation.x, extraRotation.y, extraRotation.z);
+        // GetComponent<Transform>().eulerAngles = new Vector3(-gameObject.GetComponent<Transform>().eulerAngles.x + extraRotation.x, extraRotation.y, extraRotation.z);
     }
 
     private void ClearBoard()
