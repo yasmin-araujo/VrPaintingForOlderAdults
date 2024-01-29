@@ -9,12 +9,11 @@ public class TrackingController : MonoBehaviour
     public void BoardTrackerFound()
     {
         print("Using board tracker.");
-        board.GetComponent<BoardController>().isBoardTracked = true;
+        board.GetComponent<BoardController>().SetBoardPosition(GetComponent<Transform>().gameObject);
     }
 
     public void BoardTrackerLost()
     {
         print("Not using board tracker.");
-        board.GetComponent<BoardController>().isBoardTracked = false;
     }
 }

@@ -10,7 +10,6 @@ public class BoardController : MonoBehaviour
 {
     [SerializeField] private GameObject pixelPrefab;
     [SerializeField] private PalleteSO palleteSO;
-    [SerializeField] private GameObject boardTarget;
 
     private float boardHeight;
     private float boardWidth;
@@ -21,25 +20,10 @@ public class BoardController : MonoBehaviour
     [SerializeField] private Vector3 extraPosition;
 
     public bool finished = false;
-    public bool isBoardTracked = false;
 
     void Start()
     {
         defaultPosition = GetComponent<Transform>().parent.position + new Vector3(0, 0, 0.1F);
-    }
-
-    void Update()
-    {
-        if (isBoardTracked)
-        {
-            GetComponent<Transform>().position = boardTarget.GetComponent<Transform>().position + extraPosition;
-            GetComponent<Transform>().eulerAngles = new Vector3(-boardTarget.GetComponent<Transform>().eulerAngles.x + extraRotation.x, 0, 0);
-        }
-        else
-        {
-            GetComponent<Transform>().position = defaultPosition;
-            GetComponent<Transform>().rotation = Quaternion.identity;
-        }
     }
 
     public void LoadDrawing(Drawing drawing, Func<Material> GetHandsMaterial, Func<int> GetHandsColor, bool assistance)
@@ -129,6 +113,18 @@ public class BoardController : MonoBehaviour
         {
             transform.Find("RightBorder").gameObject.SetActive(false);
         }
+    }
+
+    public void SetBoardOnDefaultPosition()
+    {
+        GetComponent<Transform>().position = defaultPosition;
+        GetComponent<Transform>().rotation = Quaternion.identity;
+    }
+
+    public void SetBoardPosition(GameObject gameObject)
+    {
+        GetComponent<Transform>().position = gameObject.GetComponent<Transform>().position + extraPosition;
+        GetComponent<Transform>().eulerAngles = new Vector3(-gameObject.GetComponent<Transform>().eulerAngles.x + extraRotation.x, 0, gameObject.GetComponent<Transform>().eulerAngles.z + extraRotation.z);
     }
 
     private void ClearBoard()
