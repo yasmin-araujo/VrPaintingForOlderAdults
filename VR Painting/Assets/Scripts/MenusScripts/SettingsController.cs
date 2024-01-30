@@ -10,6 +10,7 @@ public class SettingsController : MonoBehaviour
     private TextMeshProUGUI brushText;
     private TextMeshProUGUI mainHandText;
     private TextMeshProUGUI assistanceText;
+    private TextMeshProUGUI trackingText;
 
     void Start()
     {
@@ -32,14 +33,20 @@ public class SettingsController : MonoBehaviour
                 assistanceText = child.gameObject.GetComponent<TextMeshProUGUI>();
                 flag++;
             }
+            else if (child.name == "TrackingStatusText")
+            {
+                trackingText = child.gameObject.GetComponent<TextMeshProUGUI>();
+                flag++;
+            }
 
-            if (flag >= 3)
+            if (flag >= 4)
                 break;
         }
 
         brushText.text = settingsSO.UseBrush ? "Ja" : "Nein";
         mainHandText.text = settingsSO.LeftHand ? "Links" : "Rechts";
         assistanceText.text = settingsSO.UseAssistance ? "Ja" : "Nein";
+        trackingText.text = settingsSO.UseTracking ? "Ja" : "Nein";
     }
 
     public void SettingsButton(bool openSettings)
@@ -66,6 +73,13 @@ public class SettingsController : MonoBehaviour
     {
         settingsSO.UseAssistance = !settingsSO.UseAssistance;
         assistanceText.text = settingsSO.UseAssistance ? "Ja" : "Nein";
+        EditorUtility.SetDirty(settingsSO);
+    }
+
+    public void EnableTracking()
+    {
+        settingsSO.UseTracking = !settingsSO.UseTracking;
+        trackingText.text = settingsSO.UseTracking ? "Ja" : "Nein";
         EditorUtility.SetDirty(settingsSO);
     }
 }

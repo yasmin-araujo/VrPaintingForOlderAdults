@@ -15,11 +15,13 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject pallete;
     [SerializeField] private GameObject hands;
     [SerializeField] private GameObject nextMenu;
+    [SerializeField] private GameObject vuforiaTracker;
 
     // Start is called before the first frame update
     void Start()
     {
         LoadNewGame();
+        vuforiaTracker.SetActive(settingsSO.UseTracking);
     }
 
     void Update()

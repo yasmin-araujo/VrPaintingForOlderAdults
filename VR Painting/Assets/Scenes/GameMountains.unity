@@ -3489,7 +3489,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1925170879}
+  - {fileID: 1878526443}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4811,6 +4811,7 @@ MonoBehaviour:
   pallete: {fileID: 324516848}
   hands: {fileID: 573384185}
   nextMenu: {fileID: 929859819}
+  vuforiaTracker: {fileID: 1794884771}
 --- !u!1 &1088112925
 GameObject:
   m_ObjectHideFlags: 0
@@ -7310,7 +7311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4733c5f009d26ad49b3685117b8d3eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &1925170879
+--- !u!21 &1878526443
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -7319,7 +7320,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: 'AstronautMaterial
 
-    134588'
+    147174'
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
