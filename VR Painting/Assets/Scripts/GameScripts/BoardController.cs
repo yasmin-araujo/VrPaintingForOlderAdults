@@ -10,11 +10,11 @@ public class BoardController : MonoBehaviour
 {
     [SerializeField] private GameObject pixelPrefab;
     [SerializeField] private PalleteSO palleteSO;
+    [SerializeField] private SettingsSO settingsSO;
 
     private float boardHeight;
     private float boardWidth;
     private int progress = 0;
-    private bool useAssistance;
     private Vector3 defaultPosition;
     [SerializeField] private Vector3 extraRotation;
     [SerializeField] private Vector3 extraPosition;
@@ -26,11 +26,10 @@ public class BoardController : MonoBehaviour
         defaultPosition = GetComponent<Transform>().parent.position + new Vector3(0, 0, 0.1F);
     }
 
-    public void LoadDrawing(Drawing drawing, Func<Material> GetHandsMaterial, Func<int> GetHandsColor, bool assistance)
+    public void LoadDrawing(Drawing drawing, Func<Material> GetHandsMaterial, Func<int> GetHandsColor)
     {
         ClearBoard();
         progress = 0;
-        useAssistance = assistance;
 
         boardHeight = drawing.matrix.Count;
         boardWidth = drawing.matrix[0].Count;
@@ -58,7 +57,7 @@ public class BoardController : MonoBehaviour
         pixCont.pixelColor = pixelColor;
         pixCont.row = row;
         pixCont.column = column;
-        pixCont.useAssistance = useAssistance;
+        pixCont.useAssistance = settingsSO.UseAssistance;
         pixCont.IncrementProgress = () =>
         {
             progress++;
@@ -92,7 +91,9 @@ public class BoardController : MonoBehaviour
 
         CheckBorders(row, column, drawing.matrix[row][column], transform, drawing.matrix);
         GameObject pxlThreshold = transform.Find("Pixel").gameObject.GetComponent<Transform>().Find("PixelThreshold").gameObject;
-        pxlThreshold.SetActive(!useAssistance);
+        pxlThreshold.SetActive(!settingsSO.UseAssistance);
+        float scale = settingsSO.assistanceIntensity * 0.4F + 0.2F;
+        pxlThreshold.GetComponent<Transform>().localScale = new Vector3(scale, scale, 1);
     }
 
     private void CheckBorders(int row, int column, int originalPixelColor, Transform transform, List<List<int>> matrix)

@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingsController : MonoBehaviour
 {
@@ -69,10 +70,17 @@ public class SettingsController : MonoBehaviour
         EditorUtility.SetDirty(settingsSO);
     }
 
-    public void EnableAssistance()
+    public void EnableAssistance(GameObject assistanceIntensity)
     {
         settingsSO.UseAssistance = !settingsSO.UseAssistance;
         assistanceText.text = settingsSO.UseAssistance ? "Ja" : "Nein";
+        assistanceIntensity.SetActive(settingsSO.UseAssistance);
+        EditorUtility.SetDirty(settingsSO);
+    }
+
+    public void SetAssistanceIntensity(GameObject slider)
+    {
+        settingsSO.assistanceIntensity = slider.GetComponent<Slider>().value;
         EditorUtility.SetDirty(settingsSO);
     }
 
