@@ -4567,7 +4567,7 @@ MonoBehaviour:
   pixelPrefab: {fileID: 2608311550562740639, guid: 0c00af91e6d532a498b5e12805964c97, type: 3}
   palleteSO: {fileID: 11400000, guid: cb89a44c7aa4bc341a268c477056bdad, type: 2}
   settingsSO: {fileID: 11400000, guid: 36b53cbc31fc5db42ba390e585fecd39, type: 2}
-  extraRotation: {x: -70, y: 0, z: 0}
+  extraRotation: {x: 0, y: 0, z: 0}
   extraPosition: {x: 0, y: 0, z: 0}
   finished: 0
 --- !u!4 &988004194
