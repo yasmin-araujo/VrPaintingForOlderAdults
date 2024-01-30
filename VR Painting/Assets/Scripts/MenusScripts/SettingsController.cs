@@ -12,6 +12,7 @@ public class SettingsController : MonoBehaviour
     private TextMeshProUGUI mainHandText;
     private TextMeshProUGUI assistanceText;
     private TextMeshProUGUI trackingText;
+    private GameObject thresholdSizeSlider;
 
     void Start()
     {
@@ -39,8 +40,13 @@ public class SettingsController : MonoBehaviour
                 trackingText = child.gameObject.GetComponent<TextMeshProUGUI>();
                 flag++;
             }
+            else if (child.name == "ThresholdSizeSlider")
+            {
+                thresholdSizeSlider = child.gameObject;
+                flag++;
+            }
 
-            if (flag >= 4)
+            if (flag >= 5)
                 break;
         }
 
@@ -48,6 +54,8 @@ public class SettingsController : MonoBehaviour
         mainHandText.text = settingsSO.LeftHand ? "Links" : "Rechts";
         assistanceText.text = settingsSO.UseAssistance ? "Ja" : "Nein";
         trackingText.text = settingsSO.UseTracking ? "Ja" : "Nein";
+        thresholdSizeSlider.GetComponent<Transform>().parent.gameObject.SetActive(!settingsSO.UseAssistance);
+        thresholdSizeSlider.GetComponent<Slider>().value = settingsSO.thresholdSize;
     }
 
     public void SettingsButton(bool openSettings)
@@ -70,17 +78,17 @@ public class SettingsController : MonoBehaviour
         EditorUtility.SetDirty(settingsSO);
     }
 
-    public void EnableAssistance(GameObject assistanceIntensity)
+    public void EnableAssistance(GameObject thresholdSize)
     {
         settingsSO.UseAssistance = !settingsSO.UseAssistance;
         assistanceText.text = settingsSO.UseAssistance ? "Ja" : "Nein";
-        assistanceIntensity.SetActive(settingsSO.UseAssistance);
+        thresholdSize.SetActive(!settingsSO.UseAssistance);
         EditorUtility.SetDirty(settingsSO);
     }
 
-    public void SetAssistanceIntensity(GameObject slider)
+    public void SetThresholdSize()
     {
-        settingsSO.assistanceIntensity = slider.GetComponent<Slider>().value;
+        settingsSO.thresholdSize = thresholdSizeSlider.GetComponent<Slider>().value;
         EditorUtility.SetDirty(settingsSO);
     }
 

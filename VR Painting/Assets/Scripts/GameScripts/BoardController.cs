@@ -92,7 +92,7 @@ public class BoardController : MonoBehaviour
         CheckBorders(row, column, drawing.matrix[row][column], transform, drawing.matrix);
         GameObject pxlThreshold = transform.Find("Pixel").gameObject.GetComponent<Transform>().Find("PixelThreshold").gameObject;
         pxlThreshold.SetActive(!settingsSO.UseAssistance);
-        float scale = settingsSO.assistanceIntensity * 0.4F + 0.2F;
+        float scale = settingsSO.thresholdSize * 0.4F + 0.2F;
         pxlThreshold.GetComponent<Transform>().localScale = new Vector3(scale, scale, 1);
     }
 

@@ -7,7 +7,7 @@ public class SettingsSO : ScriptableObject
     [SerializeField] private bool _leftHand;
     [SerializeField] private bool _useAssistance;
     [SerializeField] private bool _useTracking;
-    public float assistanceIntensity;
+    public float thresholdSize;
 
     public bool UseBrush
     {
