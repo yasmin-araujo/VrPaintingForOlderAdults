@@ -34,6 +34,11 @@
             "id": 6,
             "name": "Rot",
             "letter": "R"
+        },
+        {
+            "id": 7,
+            "name": "Orange",
+            "letter": "O"
         }
     ]
 }
