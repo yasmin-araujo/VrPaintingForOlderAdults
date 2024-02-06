@@ -11,10 +11,12 @@ public class BoardController : MonoBehaviour
     [SerializeField] private GameObject pixelPrefab;
     [SerializeField] private PalleteSO palleteSO;
     [SerializeField] private SettingsSO settingsSO;
+    [SerializeField] private TrackerSO trackerSO;
 
     private float boardHeight;
     private float boardWidth;
     private int progress = 0;
+    private Transform boardTransform;
     private Vector3 defaultPosition;
     [SerializeField] private Vector3 extraRotation;
     [SerializeField] private Vector3 extraPosition;
@@ -23,19 +25,26 @@ public class BoardController : MonoBehaviour
 
     void Start()
     {
-        defaultPosition = GetComponent<Transform>().parent.position + new Vector3(0, 0, 0.1F);
+        boardTransform = GetComponent<Transform>();
+        defaultPosition = boardTransform.parent.position + new Vector3(0, 0, 0.1F);
+
+        if (!settingsSO.UseTracking)
+        {
+            SetBoardOnDefaultPosition(true);
+        }
     }
 
     public void LoadDrawing(Drawing drawing, Func<Material> GetHandsMaterial, Func<int> GetHandsColor)
     {
         ClearBoard();
         progress = 0;
+        SetBoardOnDefaultPosition(false);
 
         boardHeight = drawing.matrix.Count;
         boardWidth = drawing.matrix[0].Count;
 
-        Vector3 posBoard = GetComponent<Transform>().position;
-        float gameScale = GetComponent<Transform>().parent.gameObject.GetComponent<Transform>().localScale.x;
+        Vector3 posBoard = boardTransform.position;
+        float gameScale = boardTransform.parent.gameObject.GetComponent<Transform>().localScale.x;
         float pixelScale = pixelPrefab.GetComponent<Transform>().localScale.x;
 
         for (float axisY = 0; axisY < boardHeight; axisY++)
@@ -43,10 +52,13 @@ public class BoardController : MonoBehaviour
             for (float axisX = 0; axisX < boardWidth; axisX++)
             {
                 int pixelColor = drawing.colors[drawing.matrix[(int)axisY][(int)axisX]];
-                Vector3 position = new Vector3(posBoard.x + (axisX * pixelScale - ((float)boardWidth * pixelScale / 2)) * gameScale, posBoard.y + (axisY * pixelScale - ((float)boardHeight * pixelScale / 2)) * -gameScale, posBoard.z);
+                Vector3 position = new Vector3(posBoard.x + (axisX * pixelScale - ((float)boardWidth * pixelScale / 2)) * gameScale, posBoard.y + (axisY * pixelScale - ((float)boardHeight * pixelScale)) * -gameScale, posBoard.z);
                 CreatePixel((int)axisY, (int)axisX, position, pixelColor, drawing, GetHandsMaterial, GetHandsColor);
             }
         }
+
+        boardTransform.position = trackerSO.trackerPosition;
+        boardTransform.eulerAngles = trackerSO.trackerRotation;
         print("Drawing loaded");
     }
 
@@ -116,23 +128,29 @@ public class BoardController : MonoBehaviour
         }
     }
 
-    public void SetBoardOnDefaultPosition()
+    public void SetBoardOnDefaultPosition(bool saveValue)
     {
-        GetComponent<Transform>().position = defaultPosition;
-        GetComponent<Transform>().rotation = Quaternion.identity;
+        boardTransform.position = defaultPosition;
+        boardTransform.rotation = Quaternion.identity;
+        if (saveValue)
+        {
+            trackerSO.trackerPosition = boardTransform.position;
+            trackerSO.trackerRotation = boardTransform.eulerAngles;
+        }
     }
 
     public void SetBoardPosition(GameObject gameObject)
     {
-        GetComponent<Transform>().position = gameObject.GetComponent<Transform>().position + extraPosition;
-        GetComponent<Transform>().eulerAngles = new Vector3(extraRotation.x, extraRotation.y, extraRotation.z);
-        // GetComponent<Transform>().eulerAngles = new Vector3(-gameObject.GetComponent<Transform>().eulerAngles.x + extraRotation.x, extraRotation.y, extraRotation.z);
+        boardTransform.position = gameObject.GetComponent<Transform>().position + extraPosition;
+        boardTransform.eulerAngles = new Vector3(extraRotation.x, extraRotation.y, extraRotation.z);
+        // boardTransform.eulerAngles = new Vector3(-gameObject.GetComponent<Transform>().eulerAngles.x + extraRotation.x, extraRotation.y, extraRotation.z);
+        trackerSO.trackerPosition = boardTransform.position;
+        trackerSO.trackerRotation = boardTransform.eulerAngles;
     }
 
     private void ClearBoard()
     {
-        Transform transform = GetComponent<Transform>();
-        foreach (Transform pixel in transform)
+        foreach (Transform pixel in boardTransform)
         {
             Destroy(pixel.gameObject);
         }
