@@ -3606,7 +3606,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2011677197899727451, guid: 4e226dedf10e47442befe7151023af7c, type: 3}
       propertyPath: m_text
-      value: Experte/in
+      value: Experte
       objectReference: {fileID: 0}
     - target: {fileID: 2079088287919248551, guid: 4e226dedf10e47442befe7151023af7c, type: 3}
       propertyPath: m_Name
@@ -6309,6 +6309,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 660420191}
     m_Modifications:
+    - target: {fileID: 2011677197899727451, guid: 4e226dedf10e47442befe7151023af7c, type: 3}
+      propertyPath: m_text
+      value: "\rAnf\xE4nger"
+      objectReference: {fileID: 0}
     - target: {fileID: 2079088287919248551, guid: 4e226dedf10e47442befe7151023af7c, type: 3}
       propertyPath: m_Name
       value: ButtonNovice

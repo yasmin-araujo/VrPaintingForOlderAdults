@@ -37,11 +37,15 @@ public class LevelListingController : MonoBehaviour
         switch (index)
         {
             case 0:
-                return "Einfach";
+                return "Anfänger";
             case 1:
-                return "Normal";
+                return "Einfach";
             case 2:
+                return "Normal";
+            case 3:
                 return "Schwer";
+            case 4:
+                return "Experte";
             default:
                 return "Error";
         }

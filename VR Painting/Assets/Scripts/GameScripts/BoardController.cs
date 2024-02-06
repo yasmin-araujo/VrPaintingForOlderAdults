@@ -26,7 +26,7 @@ public class BoardController : MonoBehaviour
     void Start()
     {
         boardTransform = GetComponent<Transform>();
-        defaultPosition = boardTransform.parent.position + new Vector3(0, 0, 0.1F);
+        defaultPosition = new Vector3(0, 0, 0.1F);
 
         if (!settingsSO.UseTracking)
         {
@@ -130,7 +130,7 @@ public class BoardController : MonoBehaviour
 
     public void SetBoardOnDefaultPosition(bool saveValue)
     {
-        boardTransform.position = defaultPosition;
+        boardTransform.localPosition = defaultPosition;
         boardTransform.rotation = Quaternion.identity;
         if (saveValue)
         {
