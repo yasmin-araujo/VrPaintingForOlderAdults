@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
     <Tracking>
-        <ImageTarget name="Cube.Right" size="0.250000 0.250000"/>
-        <ImageTarget name="Cube.Back" size="0.250000 0.250000"/>
-        <ImageTarget name="Cube.Left" size="0.250000 0.250000"/>
-        <ImageTarget name="Cube.Top" size="0.250000 0.250000"/>
-        <ImageTarget name="Cube.Bottom" size="0.250000 0.250000"/>
+        <ImageTarget name="GeometryCube.Front" size="0.300000 0.300000"/>
+        <ImageTarget name="GeometryCube.Left" size="0.300000 0.300000"/>
+        <ImageTarget name="GeometryCube.Right" size="0.300000 0.300000"/>
+        <ImageTarget name="GeometryCube.Top" size="0.300000 0.300000"/>
+        <ImageTarget name="GeometryCube.Back" size="0.300000 0.300000"/>
+        <ImageTarget name="GeometryCube.Bottom" size="0.300000 0.300000"/>
         <ImageTarget name="Cube.Front" size="0.250000 0.250000"/>
+        <ImageTarget name="Cube.Left" size="0.250000 0.250000"/>
+        <ImageTarget name="Cube.Right" size="0.250000 0.250000"/>
+        <ImageTarget name="Cube.Top" size="0.250000 0.250000"/>
+        <ImageTarget name="Cube.Back" size="0.250000 0.250000"/>
+        <ImageTarget name="Cube.Bottom" size="0.250000 0.250000"/>
+        <MultiTarget name="GeometryCube">
+            <Part name="GeometryCube.Left" translation="-0.15000000596046448 0 0" rotation="AD: 0 1 0 -90"/>
+            <Part name="GeometryCube.Right" translation="0.15000000596046448 0 0" rotation="AD: 0 1 0 90"/>
+            <Part name="GeometryCube.Front" translation="0 0 0.15000000596046448" rotation="AD: 1 0 0 0"/>
+            <Part name="GeometryCube.Back" translation="0 0 -0.15000000596046448" rotation="AD: 0 1 0 180"/>
+            <Part name="GeometryCube.Top" translation="0 0.15000000596046448 0" rotation="AD: 1 0 0 -90"/>
+            <Part name="GeometryCube.Bottom" translation="0 -0.15000000596046448 0" rotation="AD: 1 0 0 90"/>
+        </MultiTarget>
         <MultiTarget name="Cube">
             <Part name="Cube.Left" translation="-0.125 0 0" rotation="AD: 0 1 0 -90"/>
             <Part name="Cube.Right" translation="0.125 0 0" rotation="AD: 0 1 0 90"/>

@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Oculus.Interaction;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class BoardController : MonoBehaviour
@@ -146,6 +145,7 @@ public class BoardController : MonoBehaviour
         // boardTransform.eulerAngles = new Vector3(-gameObject.GetComponent<Transform>().eulerAngles.x + extraRotation.x, extraRotation.y, extraRotation.z);
         trackerSO.trackerPosition = boardTransform.position;
         trackerSO.trackerRotation = boardTransform.eulerAngles;
+        EditorUtility.SetDirty(trackerSO);
     }
 
     private void ClearBoard()
