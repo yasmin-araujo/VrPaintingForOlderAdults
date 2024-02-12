@@ -1,18 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
     <Tracking>
-        <ImageTarget name="GeometryCube.Front" size="0.300000 0.300000"/>
-        <ImageTarget name="GeometryCube.Left" size="0.300000 0.300000"/>
+        <ImageTarget name="CubeBlack.Right" size="0.350000 0.350000"/>
+        <ImageTarget name="CubeBlack.Bottom" size="0.350000 0.350000"/>
+        <ImageTarget name="CubeBlack.Top" size="0.350000 0.350000"/>
+        <ImageTarget name="CubeBlack.Left" size="0.350000 0.350000"/>
+        <ImageTarget name="CubeBlack.Back" size="0.350000 0.350000"/>
+        <ImageTarget name="CubeBlack.Front" size="0.350000 0.350000"/>
         <ImageTarget name="GeometryCube.Right" size="0.300000 0.300000"/>
-        <ImageTarget name="GeometryCube.Top" size="0.300000 0.300000"/>
-        <ImageTarget name="GeometryCube.Back" size="0.300000 0.300000"/>
         <ImageTarget name="GeometryCube.Bottom" size="0.300000 0.300000"/>
-        <ImageTarget name="Cube.Front" size="0.250000 0.250000"/>
-        <ImageTarget name="Cube.Left" size="0.250000 0.250000"/>
+        <ImageTarget name="GeometryCube.Top" size="0.300000 0.300000"/>
+        <ImageTarget name="GeometryCube.Left" size="0.300000 0.300000"/>
+        <ImageTarget name="GeometryCube.Back" size="0.300000 0.300000"/>
+        <ImageTarget name="GeometryCube.Front" size="0.300000 0.300000"/>
         <ImageTarget name="Cube.Right" size="0.250000 0.250000"/>
-        <ImageTarget name="Cube.Top" size="0.250000 0.250000"/>
-        <ImageTarget name="Cube.Back" size="0.250000 0.250000"/>
         <ImageTarget name="Cube.Bottom" size="0.250000 0.250000"/>
+        <ImageTarget name="Cube.Top" size="0.250000 0.250000"/>
+        <ImageTarget name="Cube.Left" size="0.250000 0.250000"/>
+        <ImageTarget name="Cube.Back" size="0.250000 0.250000"/>
+        <ImageTarget name="Cube.Front" size="0.250000 0.250000"/>
+        <MultiTarget name="CubeBlack">
+            <Part name="CubeBlack.Left" translation="-0.17499999701976776 0 0" rotation="AD: 0 1 0 -90"/>
+            <Part name="CubeBlack.Right" translation="0.17499999701976776 0 0" rotation="AD: 0 1 0 90"/>
+            <Part name="CubeBlack.Front" translation="0 0 0.17499999701976776" rotation="AD: 1 0 0 0"/>
+            <Part name="CubeBlack.Back" translation="0 0 -0.17499999701976776" rotation="AD: 0 1 0 180"/>
+            <Part name="CubeBlack.Top" translation="0 0.17499999701976776 0" rotation="AD: 1 0 0 -90"/>
+            <Part name="CubeBlack.Bottom" translation="0 -0.17499999701976776 0" rotation="AD: 1 0 0 90"/>
+        </MultiTarget>
         <MultiTarget name="GeometryCube">
             <Part name="GeometryCube.Left" translation="-0.15000000596046448 0 0" rotation="AD: 0 1 0 -90"/>
             <Part name="GeometryCube.Right" translation="0.15000000596046448 0 0" rotation="AD: 0 1 0 90"/>
