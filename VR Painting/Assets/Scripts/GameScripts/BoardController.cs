@@ -56,7 +56,7 @@ public class BoardController : MonoBehaviour
             }
         }
 
-        boardTransform.position = trackerSO.trackerPosition;
+        boardTransform.localPosition = trackerSO.trackerPosition;
         boardTransform.eulerAngles = trackerSO.trackerRotation;
         print("Drawing loaded");
     }
@@ -133,7 +133,7 @@ public class BoardController : MonoBehaviour
         boardTransform.rotation = Quaternion.identity;
         if (saveValue)
         {
-            trackerSO.trackerPosition = boardTransform.position;
+            trackerSO.trackerPosition = boardTransform.localPosition;
             trackerSO.trackerRotation = boardTransform.eulerAngles;
         }
     }
@@ -143,7 +143,7 @@ public class BoardController : MonoBehaviour
         boardTransform.position = gameObject.GetComponent<Transform>().position + extraPosition;
         boardTransform.eulerAngles = new Vector3(extraRotation.x, extraRotation.y, extraRotation.z);
         // boardTransform.eulerAngles = new Vector3(-gameObject.GetComponent<Transform>().eulerAngles.x + extraRotation.x, extraRotation.y, extraRotation.z);
-        trackerSO.trackerPosition = boardTransform.position;
+        trackerSO.trackerPosition = boardTransform.localPosition;
         trackerSO.trackerRotation = boardTransform.eulerAngles;
         EditorUtility.SetDirty(trackerSO);
     }
