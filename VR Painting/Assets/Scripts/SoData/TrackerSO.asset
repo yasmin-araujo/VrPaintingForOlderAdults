@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6adbc7f77e9ef4bb2d2c57cd670b1d, type: 3}
   m_Name: TrackerSO
   m_EditorClassIdentifier: 
-  trackerPosition: {x: 0, y: 0, z: 0}
+  trackerPosition: {x: 0, y: -0.2, z: 0.1}
+  trackerRotation: {x: 0, y: 0, z: 0}

@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7e6c2d698c0b64aa0b9050c5ab7b5f, type: 3}
   m_Name: SettingsSO
   m_EditorClassIdentifier: 
-  useBrush: 0
+  _useBrush: 0
+  _leftHand: 0
+  _useAssistance: 1
+  _useTracking: 0
+  thresholdSize: 0

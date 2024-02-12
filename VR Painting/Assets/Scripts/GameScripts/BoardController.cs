@@ -25,7 +25,7 @@ public class BoardController : MonoBehaviour
     void Start()
     {
         boardTransform = GetComponent<Transform>();
-        defaultPosition = new Vector3(0, 0, 0.1F);
+        defaultPosition = new Vector3(0, -0.2F, 0.1F);
 
         if (!settingsSO.UseTracking)
         {

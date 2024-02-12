@@ -2398,6 +2398,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 312885133}
     m_Modifications:
+    - target: {fileID: 1558932220633137154, guid: d27ac1ffd4cdd7c40a39dcfa6012355c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3392710849946547363, guid: d27ac1ffd4cdd7c40a39dcfa6012355c, type: 3}
       propertyPath: _hand
       value: 
@@ -4802,7 +4806,7 @@ MonoBehaviour:
   settingsSO: {fileID: 11400000, guid: 36b53cbc31fc5db42ba390e585fecd39, type: 2}
   trackerSO: {fileID: 11400000, guid: f0e6c90d713d9e34eb69a7e2e9ef4645, type: 2}
   extraRotation: {x: 0, y: 0, z: 0}
-  extraPosition: {x: 0, y: -0.2, z: -0.05}
+  extraPosition: {x: 0.085, y: -0.3, z: -0.05}
   finished: 0
 --- !u!4 &988004194
 Transform:
@@ -4813,7 +4817,7 @@ Transform:
   m_GameObject: {fileID: 988004192}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.1}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7481,6 +7485,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 312885136}
     m_Modifications:
+    - target: {fileID: 1558932220633137154, guid: d27ac1ffd4cdd7c40a39dcfa6012355c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1829333679157806064, guid: d27ac1ffd4cdd7c40a39dcfa6012355c, type: 3}
       propertyPath: _ovrSkeleton
       value: 
