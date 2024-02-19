@@ -18,7 +18,10 @@ public class MetricsController : MonoBehaviour
     private string filename;
     private TextWriter textWriter;
     private DateTime startTime;
-    private int misses = 0;
+    // Number of times the pixels were painted wrongly.
+    private int missCount = 0;
+    // Number of times the pixels were painted wrongly, but only considering when they change to a different color.
+    private int missCountDifferentColor = 0;
 
     void Start()
     {
@@ -31,7 +34,10 @@ public class MetricsController : MonoBehaviour
     {
         string duration = (DateTime.Now - startTime).TotalSeconds.ToString();
         textWriter = new StreamWriter(filename, true);
-        textWriter.WriteLine(username + "," + metricsSO.currentDrawing + "," + settingsSO.UseBrush + "," + settingsSO.UseAssistance + "," + settingsSO.thresholdSize + "," + settingsSO.UseTracking + "," + duration + "," + misses);
+        textWriter.WriteLine(username + "," + metricsSO.currentDrawing + "," + settingsSO.UseBrush
+                                + "," + settingsSO.UseAssistance + "," + settingsSO.thresholdSize
+                                + "," + settingsSO.UseTracking + "," + duration + "," + missCount
+                                + "," + missCountDifferentColor);
         textWriter.Close();
     }
 
@@ -40,7 +46,7 @@ public class MetricsController : MonoBehaviour
         if (resetFile)
         {
             textWriter = new StreamWriter(filename, false);
-            textWriter.WriteLine("username, drawing, withBrush, withAssistance, threshold, withTracking, duration, misses");
+            textWriter.WriteLine("username, drawing, withBrush, withAssistance, threshold, withTracking, duration, missCount, missCountDifferentColor");
             textWriter.Close();
             metricsSO.playerIndex = 0;
             metricsSO.username = "player0";
@@ -63,12 +69,13 @@ public class MetricsController : MonoBehaviour
     {
         startTime = DateTime.Now;
         metricsSO.currentDrawing = id;
-        misses = 0;
+        missCount = 0;
     }
 
-    public void IncrementMissesMetric()
+    public void IncrementMissCountMetric(bool isSameColor)
     {
-        print("MISSES:" + misses);
-        misses++;
+        if (!isSameColor)
+            missCountDifferentColor++;
+        missCount++;
     }
 }

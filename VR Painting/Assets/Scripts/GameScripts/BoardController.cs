@@ -33,7 +33,7 @@ public class BoardController : MonoBehaviour
         }
     }
 
-    public void LoadDrawing(Drawing drawing, Func<Material> GetHandsMaterial, Func<int> GetHandsColor, Action IncrementMissesMetric)
+    public void LoadDrawing(Drawing drawing, Func<Material> GetHandsMaterial, Func<int> GetHandsColor, Action<bool> IncrementMissCountMetric)
     {
         ClearBoard();
         progress = 0;
@@ -52,7 +52,7 @@ public class BoardController : MonoBehaviour
             {
                 int pixelColor = drawing.colors[drawing.matrix[(int)axisY][(int)axisX]];
                 Vector3 position = new Vector3(posBoard.x + (axisX * pixelScale - ((float)boardWidth * pixelScale / 2)) * gameScale, posBoard.y + (axisY * pixelScale - ((float)boardHeight * pixelScale)) * -gameScale, posBoard.z);
-                CreatePixel((int)axisY, (int)axisX, position, pixelColor, drawing, GetHandsMaterial, GetHandsColor, IncrementMissesMetric);
+                CreatePixel((int)axisY, (int)axisX, position, pixelColor, drawing, GetHandsMaterial, GetHandsColor, IncrementMissCountMetric);
             }
         }
 
@@ -61,7 +61,7 @@ public class BoardController : MonoBehaviour
         print("Drawing loaded");
     }
 
-    private void CreatePixel(int row, int column, Vector3 position, int pixelColor, Drawing drawing, Func<Material> GetHandsMaterial, Func<int> GetHandsColor, Action IncrementMissesMetric)
+    private void CreatePixel(int row, int column, Vector3 position, int pixelColor, Drawing drawing, Func<Material> GetHandsMaterial, Func<int> GetHandsColor, Action<bool> IncrementMissCountMetric)
     {
         GameObject newPixel = Instantiate(pixelPrefab, position, Quaternion.identity, GetComponent<Transform>());
         PixelController pixCont = newPixel.GetComponent<PixelController>();
@@ -77,7 +77,7 @@ public class BoardController : MonoBehaviour
                 finished = true;
             }
         };
-        pixCont.IncrementMissesMetric = IncrementMissesMetric;
+        pixCont.IncrementMissCountMetric = IncrementMissCountMetric;
 
         // Get color code
         string code = palleteSO.pallete.paints.Where(paint => paint.id == pixelColor).First().letter;

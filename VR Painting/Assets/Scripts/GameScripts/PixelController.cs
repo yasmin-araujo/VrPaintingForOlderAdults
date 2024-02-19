@@ -13,7 +13,7 @@ public class PixelController : MonoBehaviour
 
     public Action IncrementProgress;
 
-    public Action IncrementMissesMetric;
+    public Action<bool> IncrementMissCountMetric;
 
     public void PaintPixel(Func<Material> GetHandsMaterial, Func<int> GetHandsColor, bool fromThreshold)
     {
@@ -45,9 +45,18 @@ public class PixelController : MonoBehaviour
         }
         else
         {
-            IncrementMissesMetric();
-            // Ensures contrast in case pixel will be painted with black
-            pixelText.color = GetHandsColor() == 0 ? Color.white : Color.black;
+            // When pixel is being painted by the same wrong color
+            if (currentColor == GetHandsColor())
+            {
+                IncrementMissCountMetric(true);
+                return;
+            }
+            else
+            {
+                IncrementMissCountMetric(false);
+                // Ensures contrast in case pixel will be painted with black
+                pixelText.color = GetHandsColor() == 0 ? Color.white : Color.black;
+            }
         }
 
         pixelVisualTransform.Find("Pixel").gameObject.GetComponent<Renderer>().material = GetHandsMaterial();
