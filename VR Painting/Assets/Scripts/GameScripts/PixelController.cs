@@ -38,7 +38,6 @@ public class PixelController : MonoBehaviour
         }
         else if (!fromThreshold)
         {
-            IncrementMissesMetric();
             // When the assistance is off and the color is wrong, the function has to be called from the 
             // ThresholdController in order to paint the pixel. This allows us to define a threshold
             // when painting the wrong pixels.
@@ -46,6 +45,7 @@ public class PixelController : MonoBehaviour
         }
         else
         {
+            IncrementMissesMetric();
             // Ensures contrast in case pixel will be painted with black
             pixelText.color = GetHandsColor() == 0 ? Color.white : Color.black;
         }
