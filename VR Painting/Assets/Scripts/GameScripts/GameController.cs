@@ -11,7 +11,6 @@ public class GameController : MonoBehaviour
     [SerializeField] private IntSO drawingIndex;
     [SerializeField] private GallerySO gallerySO;
     [SerializeField] private SettingsSO settingsSO;
-    [SerializeField] private MetricsSO metricsSO;
 
     [Header("Game Objects References")]
     [SerializeField] private GameObject board;
@@ -23,11 +22,14 @@ public class GameController : MonoBehaviour
     [Header("Paint Data")]
     [SerializeField] private List<Material> paintMaterials;
 
+    private MetricsController metricsController;
+
     // Start is called before the first frame update
     void Start()
     {
         LoadNewGame();
         vuforiaTracker.SetActive(settingsSO.UseTracking);
+        metricsController = GetComponent<MetricsController>();
     }
 
     void Update()
@@ -36,6 +38,7 @@ public class GameController : MonoBehaviour
         {
             board.GetComponent<BoardController>().finished = false;
             ShowNextDrawingMenu();
+            metricsController.WriteCSV();
         }
     }
 
@@ -86,7 +89,7 @@ public class GameController : MonoBehaviour
         pallete.GetComponent<PalleteController>().LoadPaints(drawing.colors, paintMaterials, (material, color) => SetColorToBrush(material, color), !settingsSO.UseBrush);
         SetColorToBrush(paintMaterials[drawing.colors[0]], drawing.colors[0]);
 
-        metricsSO.currentDrawing = drawing.id;
+        metricsController.UpdateCurrentDrawing(drawing.id);
 
         drawingIndex.Value++;
     }

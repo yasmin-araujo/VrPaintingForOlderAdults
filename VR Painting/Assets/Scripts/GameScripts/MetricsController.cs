@@ -27,7 +27,7 @@ public class MetricsController : MonoBehaviour
         username = metricsSO.username;
     }
 
-    void WriteCSV()
+    public void WriteCSV()
     {
         textWriter.WriteLine(username + "," + metricsSO.currentDrawing + "," + settingsSO.UseBrush + "," + settingsSO.UseTracking + "," + duration + "," + misses);
         textWriter.Close();
@@ -56,5 +56,10 @@ public class MetricsController : MonoBehaviour
             username = "player" + metricsSO.playerIndex;
             metricsSO.username = username;
         }
+    }
+
+    public void UpdateCurrentDrawing(string id)
+    {
+        metricsSO.currentDrawing = id;
     }
 }
