@@ -27,9 +27,9 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadNewGame();
-        vuforiaTracker.SetActive(settingsSO.UseTracking);
         metricsController = GetComponent<MetricsController>();
+        vuforiaTracker.SetActive(settingsSO.UseTracking);
+        LoadNewGame();
     }
 
     void Update()
@@ -85,7 +85,7 @@ public class GameController : MonoBehaviour
 
         Drawing drawing = gallerySO.currentSelection.drawings[drawingIndex.Value];
         board.GetComponent<BoardController>().LoadDrawing(drawing, () => hands.GetComponent<HandsController>().handsMaterial,
-                                                            () => hands.GetComponent<HandsController>().paintColor, metricsController.IncrementMissesMetric);
+                                                            () => hands.GetComponent<HandsController>().paintColor, () => metricsController.IncrementMissesMetric());
         pallete.GetComponent<PalleteController>().LoadPaints(drawing.colors, paintMaterials, (material, color) => SetColorToBrush(material, color), !settingsSO.UseBrush);
         SetColorToBrush(paintMaterials[drawing.colors[0]], drawing.colors[0]);
 

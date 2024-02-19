@@ -12,7 +12,7 @@ public class MetricsController : MonoBehaviour
 
     [Header("Player Data")]
     [Tooltip("Click once to default settings to save a new player")]
-    [SerializeField] private bool saveNewUser;
+    [SerializeField] private bool generateNewUser;
     [SerializeField] private string username;
 
     private string filename;
@@ -23,14 +23,15 @@ public class MetricsController : MonoBehaviour
     void Start()
     {
         filename = Application.dataPath + "/Scripts/Data/metrics.csv";
-        StartCSV(true);
+        StartCSV(false);
         username = metricsSO.username;
     }
 
     public void WriteCSV()
     {
         string duration = (DateTime.Now - startTime).TotalSeconds.ToString();
-        textWriter.WriteLine(username + "," + metricsSO.currentDrawing + "," + settingsSO.UseBrush + "," + settingsSO.UseAssistance + "," + settingsSO.UseTracking + "," + duration + "," + misses);
+        textWriter = new StreamWriter(filename, true);
+        textWriter.WriteLine(username + "," + metricsSO.currentDrawing + "," + settingsSO.UseBrush + "," + settingsSO.UseAssistance + "," + settingsSO.thresholdSize + "," + settingsSO.UseTracking + "," + duration + "," + misses);
         textWriter.Close();
     }
 
@@ -39,20 +40,19 @@ public class MetricsController : MonoBehaviour
         if (resetFile)
         {
             textWriter = new StreamWriter(filename, false);
-            textWriter.WriteLine("username, drawing, withBrush, withAssistance, withTracking, duration, misses");
+            textWriter.WriteLine("username, drawing, withBrush, withAssistance, threshold, withTracking, duration, misses");
             textWriter.Close();
             metricsSO.playerIndex = 0;
             metricsSO.username = "player0";
             username = metricsSO.username;
         }
-        textWriter = new StreamWriter(filename, true);
     }
 
     private void OnValidate()
     {
-        if (saveNewUser == true)
+        if (generateNewUser == true)
         {
-            saveNewUser = false;
+            generateNewUser = false;
             metricsSO.playerIndex++;
             username = "player" + metricsSO.playerIndex;
             metricsSO.username = username;
@@ -68,6 +68,7 @@ public class MetricsController : MonoBehaviour
 
     public void IncrementMissesMetric()
     {
+        print("MISSES:" + misses);
         misses++;
     }
 }
