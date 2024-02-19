@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -16,20 +17,20 @@ public class MetricsController : MonoBehaviour
 
     private string filename;
     private TextWriter textWriter;
-    private int duration = 0;
+    private DateTime startTime;
     private int misses = 0;
 
     void Start()
     {
         filename = Application.dataPath + "/Scripts/Data/metrics.csv";
-        print(filename);
         StartCSV(true);
         username = metricsSO.username;
     }
 
     public void WriteCSV()
     {
-        textWriter.WriteLine(username + "," + metricsSO.currentDrawing + "," + settingsSO.UseBrush + "," + settingsSO.UseTracking + "," + duration + "," + misses);
+        string duration = (DateTime.Now - startTime).TotalSeconds.ToString();
+        textWriter.WriteLine(username + "," + metricsSO.currentDrawing + "," + settingsSO.UseBrush + "," + settingsSO.UseAssistance + "," + settingsSO.UseTracking + "," + duration + "," + misses);
         textWriter.Close();
     }
 
@@ -38,7 +39,7 @@ public class MetricsController : MonoBehaviour
         if (resetFile)
         {
             textWriter = new StreamWriter(filename, false);
-            textWriter.WriteLine("username, drawing, withBrush, withTracking, duration, misses");
+            textWriter.WriteLine("username, drawing, withBrush, withAssistance, withTracking, duration, misses");
             textWriter.Close();
             metricsSO.playerIndex = 0;
             metricsSO.username = "player0";
@@ -58,8 +59,15 @@ public class MetricsController : MonoBehaviour
         }
     }
 
-    public void UpdateCurrentDrawing(string id)
+    public void StartDrawing(string id)
     {
+        startTime = DateTime.Now;
         metricsSO.currentDrawing = id;
+        misses = 0;
+    }
+
+    public void IncrementMissesMetric()
+    {
+        misses++;
     }
 }

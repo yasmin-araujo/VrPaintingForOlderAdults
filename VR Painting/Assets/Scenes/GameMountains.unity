@@ -5107,7 +5107,6 @@ MonoBehaviour:
   drawingIndex: {fileID: 11400000, guid: 64e3de61778ba3545b0dd240d7b2986f, type: 2}
   gallerySO: {fileID: 11400000, guid: dc8e5a9a14ff3e041abe438758169e4b, type: 2}
   settingsSO: {fileID: 11400000, guid: 36b53cbc31fc5db42ba390e585fecd39, type: 2}
-  metricsSO: {fileID: 0}
   board: {fileID: 988004192}
   pallete: {fileID: 324516848}
   hands: {fileID: 573384185}
@@ -5137,7 +5136,7 @@ MonoBehaviour:
   metricsSO: {fileID: 11400000, guid: 243b41ccc3e948049b7e25bee50bb5d9, type: 2}
   settingsSO: {fileID: 11400000, guid: 36b53cbc31fc5db42ba390e585fecd39, type: 2}
   saveNewUser: 0
-  username: player3
+  username: 
 --- !u!1 &1088112925
 GameObject:
   m_ObjectHideFlags: 0

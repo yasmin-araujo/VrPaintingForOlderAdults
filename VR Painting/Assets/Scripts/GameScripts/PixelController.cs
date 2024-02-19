@@ -13,6 +13,8 @@ public class PixelController : MonoBehaviour
 
     public Action IncrementProgress;
 
+    public Action IncrementMissesMetric;
+
     public void PaintPixel(Func<Material> GetHandsMaterial, Func<int> GetHandsColor, bool fromThreshold)
     {
         // Pixel not elegible to be painted
@@ -36,6 +38,7 @@ public class PixelController : MonoBehaviour
         }
         else if (!fromThreshold)
         {
+            IncrementMissesMetric();
             // When the assistance is off and the color is wrong, the function has to be called from the 
             // ThresholdController in order to paint the pixel. This allows us to define a threshold
             // when painting the wrong pixels.

@@ -85,11 +85,11 @@ public class GameController : MonoBehaviour
 
         Drawing drawing = gallerySO.currentSelection.drawings[drawingIndex.Value];
         board.GetComponent<BoardController>().LoadDrawing(drawing, () => hands.GetComponent<HandsController>().handsMaterial,
-                                                            () => hands.GetComponent<HandsController>().paintColor);
+                                                            () => hands.GetComponent<HandsController>().paintColor, metricsController.IncrementMissesMetric);
         pallete.GetComponent<PalleteController>().LoadPaints(drawing.colors, paintMaterials, (material, color) => SetColorToBrush(material, color), !settingsSO.UseBrush);
         SetColorToBrush(paintMaterials[drawing.colors[0]], drawing.colors[0]);
 
-        metricsController.UpdateCurrentDrawing(drawing.id);
+        metricsController.StartDrawing(drawing.id);
 
         drawingIndex.Value++;
     }
