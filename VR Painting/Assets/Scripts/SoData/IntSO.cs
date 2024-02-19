@@ -5,8 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class IntSO : ScriptableObject
 {
-    [SerializeField]
-    private int _value;
+    [SerializeField] private int _value;
 
     public int Value
     {

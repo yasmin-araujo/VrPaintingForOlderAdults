@@ -7,15 +7,21 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    [Header("Scriptable Objects")]
     [SerializeField] private IntSO drawingIndex;
     [SerializeField] private GallerySO gallerySO;
     [SerializeField] private SettingsSO settingsSO;
-    [SerializeField] private List<Material> paintMaterials;
+    [SerializeField] private MetricsSO metricsSO;
+
+    [Header("Game Objects References")]
     [SerializeField] private GameObject board;
     [SerializeField] private GameObject pallete;
     [SerializeField] private GameObject hands;
-    [SerializeField] private GameObject nextMenu;
     [SerializeField] private GameObject vuforiaTracker;
+    [SerializeField] private GameObject nextMenu;
+
+    [Header("Paint Data")]
+    [SerializeField] private List<Material> paintMaterials;
 
     // Start is called before the first frame update
     void Start()
@@ -68,14 +74,19 @@ public class GameController : MonoBehaviour
 
     private void LoadNewGame()
     {
+        if (gallerySO.currentSelection.drawings.Count == 0)
+            return;
+
         if (drawingIndex.Value == gallerySO.currentSelection.drawings.Count)
             drawingIndex.Value = 0;
 
         Drawing drawing = gallerySO.currentSelection.drawings[drawingIndex.Value];
-        board.GetComponent<BoardController>().LoadDrawing(drawing, () => hands.GetComponent<HandsController>().handsMaterial, 
+        board.GetComponent<BoardController>().LoadDrawing(drawing, () => hands.GetComponent<HandsController>().handsMaterial,
                                                             () => hands.GetComponent<HandsController>().paintColor);
         pallete.GetComponent<PalleteController>().LoadPaints(drawing.colors, paintMaterials, (material, color) => SetColorToBrush(material, color), !settingsSO.UseBrush);
         SetColorToBrush(paintMaterials[drawing.colors[0]], drawing.colors[0]);
+
+        metricsSO.currentDrawing = drawing.id;
 
         drawingIndex.Value++;
     }
